@@ -1,0 +1,42 @@
+{# TODO: range #}
+{% extends "form_group.jinja2" %}
+{% block control %}
+
+{% set MAX_RADIO_BUTTONS = 5 %}
+{% if schema.get("enum") %}
+  {% if schema["enum"]|length <= MAX_RADIO_BUTTONS %}
+    {% for value in schema["enum"] %}
+      <div class="form-check">
+        <input
+          type="radio"
+          class="form-check-input"
+          id="{{ path }}.{{ value }}"
+          name="{{ path }}" value="{{ value }}"
+          {{ "required" if required else "" }}
+        >
+        <label for="{{ path }}.{{ value }}" class="form-check-label">{{ value }}</label>
+      </div>
+    {% endfor %}
+  {% else %}
+    <select
+      id="{{ path }}"
+      name="{{ path }}"
+      class="form-control"
+      {{ "required" if required else "" }}
+    >
+    {% for value in schema["enum"] %}
+      <option value="{{ value }}">{{ value }}</option>
+    {% endfor %}
+    </select>
+  {% endif %}
+{% else %}
+  <input
+    type="text"
+    class="form-control"
+    id="{{ path }}"
+    name="{{ path }}"
+    {{ "required" if required else "" }}
+  >
+{% endif %}
+
+{% endblock %}

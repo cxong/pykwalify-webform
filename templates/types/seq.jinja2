@@ -1,0 +1,17 @@
+{#
+TODO: dynamic control for inputting lists
+TODO: multiple entry support (+ matching)
+TODO: include
+TODO: required
+TODO: unique
+#}
+{% extends "form_group.jinja2" %}
+{% block control %}
+<textarea
+  id="{{ path }}"
+  name="{{ path }}"
+  class="form-control"
+  {{ "required" if required else "" }}
+>
+</textarea>
+{% endblock %}

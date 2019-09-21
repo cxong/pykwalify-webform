@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>{{ name }} form</title>
+</head>
+<body>
+<div class="container">
+<div class="row">
+<div class="col">
+<form>
+  {{ contents }}
+  <button type="submit" class="btn btn-primary" onclick="return submitForm()">Submit</button>
+</form>
+</div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.js" integrity="sha256-UzGjnR1p5Tnl9uHyGcbtthS4cULTf5z28PXVxHVElSQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.min.js" integrity="sha256-ry6nlLQ1JmRl5RUPQ4eSuaSp/rGNPvl144WHHs7BiNE=" crossorigin="anonymous"></script>
+<script>
+function submitForm() {
+  var $form = $("form");
+  if ($form.get()[0].checkValidity()) {
+    var data = $form.serializeJSON();
+    // Remove empty nodes
+    data = trimObject(data);
+    console.log(jsyaml.safeDump(data));
+    return false;
+  } else {
+    // Form is invalid; let the browser's built in validation show
+    return true;
+  }
+}
+
+function trimObject(o) {
+  if (typeof o === 'object') {
+    for (var a in o) {
+      o[a] = trimObject(o[a]);
+      if (!o[a] || (o[a].constructor === Object && Object.keys(o[a]).length === 0)) {
+        delete o[a];
+      }
+    }
+  } else if (Array.isArray(o)) {
+    o = o.map(function(e) {
+      return trimObject(e);
+    });
+  }
+  return o;
+}
+</script>
+</body>
+</html>
