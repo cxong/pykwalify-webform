@@ -470,7 +470,30 @@
 
   
 </div>
-  <button type="submit" class="btn btn-primary" onclick="return submitForm()">Submit</button>
+  <button type="submit" class="btn btn-primary" onclick="return submitForm()">Get Code</button>
+  <div class="modal fade" id="yaml-modal" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-label">Add Game Code</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <textarea class="form-control" id="add-game-yaml-body" style="font-family:monospace;" rows="10">...</textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
 </div>
 </div>
@@ -487,7 +510,10 @@ function submitForm() {
     var data = $form.serializeJSON();
     // Remove empty nodes
     data = trimObject(data);
-    console.log(jsyaml.safeDump(data));
+    var dumped = jsyaml.safeDump(data);
+    console.log(dumped);
+    $('#add-game-yaml-body').val(dumped);
+    $('#yaml-modal').modal();
     return false;
   } else {
     // Form is invalid; let the browser's built in validation show
