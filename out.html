@@ -489,7 +489,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Copy</button>
+          <button type="button" class="btn btn-primary" onclick="copy()">Copy</button>
         </div>
       </div>
     </div>
@@ -535,6 +535,11 @@ function trimObject(o) {
     });
   }
   return o;
+}
+
+function copy() {
+  $("#add-game-yaml-body").select();
+  document.execCommand("copy");
 }
 </script>
 </body>
