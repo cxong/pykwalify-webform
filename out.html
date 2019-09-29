@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="static/tagsinput.css" rel="stylesheet" type="text/css">
   <title>game form</title>
 </head>
 <body>
@@ -35,13 +36,16 @@
   
     <label for="[originals]">originals</label>
     
-<textarea
+<select
+  multiple
+  data-role="tagsinput"
   id="[originals]"
   name="[originals]"
   class="form-control"
   required
+  placeholder="Comma to add another"
 >
-</textarea>
+</select>
 
   
 </div>
@@ -283,13 +287,16 @@
   
     <label for="[multiplayer]">multiplayer</label>
     
-<textarea
+<select
+  multiple
+  data-role="tagsinput"
   id="[multiplayer]"
   name="[multiplayer]"
   class="form-control"
   
+  placeholder="Comma to add another"
 >
-</textarea>
+</select>
 
   
 </div>
@@ -382,13 +389,16 @@
   
     <label for="[license]">license</label>
     
-<textarea
+<select
+  multiple
+  data-role="tagsinput"
   id="[license]"
   name="[license]"
   class="form-control"
   required
+  placeholder="Comma to add another"
 >
-</textarea>
+</select>
 
   
 </div>
@@ -428,13 +438,16 @@
   
     <label for="[images]">images</label>
     
-<textarea
+<select
+  multiple
+  data-role="tagsinput"
   id="[images]"
   name="[images]"
   class="form-control"
   
+  placeholder="Comma to add another"
 >
-</textarea>
+</select>
 
   
 </div>
@@ -503,6 +516,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.min.js" integrity="sha256-ry6nlLQ1JmRl5RUPQ4eSuaSp/rGNPvl144WHHs7BiNE=" crossorigin="anonymous"></script>
+<script src="static/tagsinput.js"></script>
 <script>
 function submitForm() {
   var $form = $("form");

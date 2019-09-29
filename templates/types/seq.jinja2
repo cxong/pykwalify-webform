@@ -7,11 +7,14 @@ TODO: unique
 #}
 {% extends "form_group.jinja2" %}
 {% block control %}
-<textarea
+<select
+  multiple
+  data-role="tagsinput"
   id="{{ path }}"
   name="{{ path }}"
   class="form-control"
   {{ "required" if required else "" }}
+  placeholder="Comma to add another"
 >
-</textarea>
+</select>
 {% endblock %}
