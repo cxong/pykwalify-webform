@@ -36,16 +36,15 @@
   
     <label for="[originals]">originals</label>
     
-<select
-  multiple
+<input
+  type="text"
   data-role="tagsinput"
   id="[originals]"
-  name="[originals]"
+  name="[originals]:csv"
   class="form-control"
   required
   placeholder="Comma to add another"
->
-</select>
+/>
 
   
 </div>
@@ -287,16 +286,15 @@
   
     <label for="[multiplayer]">multiplayer</label>
     
-<select
-  multiple
+<input
+  type="text"
   data-role="tagsinput"
   id="[multiplayer]"
-  name="[multiplayer]"
+  name="[multiplayer]:csv"
   class="form-control"
   
   placeholder="Comma to add another"
->
-</select>
+/>
 
   
 </div>
@@ -389,16 +387,15 @@
   
     <label for="[license]">license</label>
     
-<select
-  multiple
+<input
+  type="text"
   data-role="tagsinput"
   id="[license]"
-  name="[license]"
+  name="[license]:csv"
   class="form-control"
   required
   placeholder="Comma to add another"
->
-</select>
+/>
 
   
 </div>
@@ -438,16 +435,15 @@
   
     <label for="[images]">images</label>
     
-<select
-  multiple
+<input
+  type="text"
   data-role="tagsinput"
   id="[images]"
-  name="[images]"
+  name="[images]:csv"
   class="form-control"
   
   placeholder="Comma to add another"
->
-</select>
+/>
 
   
 </div>
@@ -516,12 +512,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.min.js" integrity="sha256-ry6nlLQ1JmRl5RUPQ4eSuaSp/rGNPvl144WHHs7BiNE=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.5/jquery.csv.min.js" integrity="sha256-zGo0JbZ5Sn6wU76MyVL0TrUZUq5GLXaFnMQCe/hSwVI=" crossorigin="anonymous"></script>
 <script src="static/tagsinput.js"></script>
 <script>
 function submitForm() {
   var $form = $("form");
   if ($form.get()[0].checkValidity()) {
-    var data = $form.serializeJSON();
+    var data = $form.serializeJSON({
+      customTypes: {
+        csv: function(str) {
+          if (str === "") {
+            return null;
+          }
+          return $.csv.toArray(str);
+        }
+      }
+    });
     // Remove empty nodes
     data = trimObject(data);
     var dumped = jsyaml.safeDump(data);

@@ -7,14 +7,13 @@ TODO: unique
 #}
 {% extends "form_group.jinja2" %}
 {% block control %}
-<select
-  multiple
+<input
+  type="text"
   data-role="tagsinput"
   id="{{ path }}"
-  name="{{ path }}"
+  name="{{ path }}:csv"
   class="form-control"
   {{ "required" if required else "" }}
   placeholder="Comma to add another"
->
-</select>
+/>
 {% endblock %}
