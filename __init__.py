@@ -1,5 +1,5 @@
 from io import StringIO
-from os import listdir, path, mkdir
+from os import listdir, path, makedirs
 from os.path import splitext
 from typing import TextIO, List
 
@@ -84,7 +84,7 @@ def main():
         schemata = safe_load(f)
     target_schema = "game"
     generator = Generator(schemata, "templates")
-    mkdir("build")
+    makedirs("build/osgameclones")
     with open("build/osgameclones/game.html", "w") as f:
         f.write(generator.generate(target_schema))
 
