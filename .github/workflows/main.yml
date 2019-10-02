@@ -7,6 +7,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
 
+    - name: Install pipenv
+      uses: dschep/install-pipenv-action@v1
+
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@master
       env:
@@ -14,4 +17,4 @@ jobs:
         BASE_BRANCH: master # The branch the action should deploy from.
         BRANCH: gh-pages # The branch the action should deploy to.
         FOLDER: build # The folder the action should deploy.
-        BUILD_SCRIPT: pipenv install && pipenv run -m __init__
+        BUILD_SCRIPT: pipenv run -m __init__
