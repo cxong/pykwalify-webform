@@ -14,7 +14,7 @@ jobs:
       run: sudo -H pip install -U pipenv
 
     - name: Build
-      run: pipenv run python -m __init__
+      run: pipenv install && pipenv run python -m __init__
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@master
