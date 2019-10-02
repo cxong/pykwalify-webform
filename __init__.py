@@ -85,7 +85,7 @@ def main():
     target_schema = "game"
     generator = Generator(schemata, "templates")
     mkdir("build")
-    with open("build/out.html", "w") as f:
+    with open("build/osgameclones/game.html", "w") as f:
         f.write(generator.generate(target_schema))
 
 
