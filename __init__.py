@@ -84,7 +84,7 @@ def main():
         schemata = safe_load(f)
     target_schema = "game"
     generator = Generator(schemata, "templates")
-    with open("out.html", "w") as f:
+    with open("build/out.html", "w") as f:
         f.write(generator.generate(target_schema))
 
 
