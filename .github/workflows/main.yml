@@ -17,10 +17,15 @@ jobs:
         mkdir build
         cp -r static build
 
-    - name: Build (osgameclones)
+    - name: Build (osgameclones.games)
       run: |
         wget https://raw.githubusercontent.com/opengaming/osgameclones/master/schema/games.yaml
         pipenv run python -m __init__ games.yaml build/osgameclones/game.html
+
+    - name: Build (osgameclones.originals)
+      run: |
+        wget https://raw.githubusercontent.com/opengaming/osgameclones/master/schema/originals.yaml
+        pipenv run python -m __init__ originals.yaml build/osgameclones/original.html
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@master
