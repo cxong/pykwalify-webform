@@ -10,11 +10,11 @@ jobs:
     - name: Setup python
       uses: actions/setup-python@v1
 
-    - name: Install pipenv
-      run: sudo -H pip install -U pipenv
+    - name: Setup pipenv
+      run: sudo -H pip install -U pipenv && pipenv install && mkdir build && cp -r static build
 
-    - name: Build
-      run: pipenv install && pipenv run python -m __init__ && cp -r static build
+    - name: Build (osgameclones)
+      run: pipenv run python -m __init__ schema.yaml build/osgameclones/game.html
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@master
