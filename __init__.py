@@ -88,7 +88,7 @@ def main(schema_file, out_path: str):
     schemata = safe_load(schema_file)
     target_schema = "game"
     generator = Generator(schemata, "templates")
-    makedirs(os.path.dirname(out_path))
+    makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w") as f:
         f.write(generator.generate(target_schema))
 
