@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 jinja2 = "*"
 pykwalify = "*"
+click = "*"
 
 [requires]
 python_version = "3.7"

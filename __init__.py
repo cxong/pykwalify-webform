@@ -1,8 +1,10 @@
+import os
 from io import StringIO
 from os import listdir, path, makedirs
 from os.path import splitext
 from typing import TextIO, List
 
+import click
 from jinja2 import Environment, FileSystemLoader
 from yaml import safe_load
 
@@ -79,13 +81,15 @@ class Generator:
         return self._env.get_template(filename)
 
 
-def main():
-    with open("schema.yaml", "r") as f:
-        schemata = safe_load(f)
+@click.command()
+@click.argument("schema_file", type=click.File("r"))
+@click.argument("out_path", type=click.Path(dir_okay=False, writable=True))
+def main(schema_file, out_path: str):
+    schemata = safe_load(schema_file)
     target_schema = "game"
     generator = Generator(schemata, "templates")
-    makedirs("build/osgameclones")
-    with open("build/osgameclones/game.html", "w") as f:
+    makedirs(os.path.basename(out_path))
+    with open(out_path, "w") as f:
         f.write(generator.generate(target_schema))
 
 
