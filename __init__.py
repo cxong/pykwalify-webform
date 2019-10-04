@@ -38,7 +38,9 @@ class Generator:
 
     def generate(self, target_schema: str):
         stream = StringIO()
-        self._generate(stream, self._schemata[f"schema;{target_schema}"], [target_schema])
+        schema = self._schemata[f"schema;{target_schema}"] if target_schema else self._schemata["sequence"][0]
+        target_schema = f"schema;{target_schema}" if target_schema else "sequence"
+        self._generate(stream, schema, [target_schema])
         return self._page_template.render(
             name=target_schema, contents=stream.getvalue()
         )
@@ -50,7 +52,9 @@ class Generator:
         # TODO: desc
         # TODO: example
 
-        schema_type = self.TYPE_ALIASES.get(schema["type"], schema["type"])
+        # TODO: include
+        schema_type = schema.get("type", "str")
+        schema_type = self.TYPE_ALIASES.get(schema_type, schema_type)
         required = schema.get("req", False) or schema.get("required", False)
 
         # TODO: use template inheritance for composite types
@@ -84,9 +88,9 @@ class Generator:
 @click.command()
 @click.argument("schema_file", type=click.File("r"))
 @click.argument("out_path", type=click.Path(dir_okay=False, writable=True))
-def main(schema_file, out_path: str):
+@click.argument("target_schema", default="")
+def main(schema_file, out_path: str, target_schema: str):
     schemata = safe_load(schema_file)
-    target_schema = "game"
     generator = Generator(schemata, "templates")
     makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w") as f:
