@@ -20,7 +20,7 @@ jobs:
     - name: Build (osgameclones.games)
       run: |
         wget https://raw.githubusercontent.com/opengaming/osgameclones/master/schema/games.yaml
-        pipenv run python -m __init__ games.yaml build/osgameclones/game.html
+        pipenv run python -m __init__ games.yaml build/osgameclones/game.html game
 
     - name: Build (osgameclones.originals)
       run: |
