@@ -3,16 +3,15 @@ TODO: dynamic control for inputting lists
 TODO: multiple entry support (+ matching)
 TODO: include
 TODO: required
-TODO: unique
 #}
 {% extends "form_group.jinja2" %}
 {% block control %}
 <input
   type="text"
-  data-role="tagsinput"
+  {% if not schema.get("unique") %}data-allow-duplicates{% endif %}
   id="{{ path }}"
   name="{{ path }}:csv"
-  class="form-control"
+  class="form-control tagsinput"
   {{ "required" if required else "" }}
   placeholder="Comma to add another"
 />
