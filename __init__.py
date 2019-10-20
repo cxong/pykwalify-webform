@@ -6,7 +6,7 @@ from typing import TextIO, List
 
 import click
 from jinja2 import Environment, FileSystemLoader
-from yaml import safe_load
+from yaml import safe_load, safe_dump
 
 
 class Generator:
@@ -38,11 +38,17 @@ class Generator:
 
     def generate(self, target_schema: str):
         stream = StringIO()
-        schema = self._schemata[f"schema;{target_schema}"] if target_schema else self._schemata["sequence"][0]
-        target_schema = f"schema;{target_schema}" if target_schema else "sequence"
+        if target_schema:
+            name = target_schema
+            schema = self._schemata[f"schema;{target_schema}"]
+            target_schema = f"schema;{target_schema}"
+        else:
+            name = ""
+            schema = self._schemata["sequence"][0]
+            target_schema = "sequence"
         self._generate(stream, schema, [target_schema])
         return self._page_template.render(
-            name=target_schema, contents=stream.getvalue()
+            name=name, contents=stream.getvalue(), schema=safe_dump(self._schemata)
         )
 
     def _generate(self, stream: TextIO, schema: dict, names: List[str]):

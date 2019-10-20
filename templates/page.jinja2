@@ -6,10 +6,41 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha256-siyOpF/pBWUPgIcQi17TLBkjvNgNQArcmwJB8YvkAgg=" crossorigin="anonymous" />
   <link href="/pykwalify-webform/static/tagsinput.css" rel="stylesheet" type="text/css">
-  <title>{{ name }} form</title>
+  <title>{{ name|title }} form</title>
 </head>
 <body>
 <div class="container">
+
+{# Schema modal #}
+<div class="row">
+  <div class="col">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#schemaModal">
+      YAML schema 🔗
+    </button>
+  </div>
+  <div class="modal fade" id="schemaModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">YAML schema</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <pre><code>
+            {{ schema }}
+          </code></pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{# Main content #}
 <div class="row">
 <div class="col">
 <form>
