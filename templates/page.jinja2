@@ -100,7 +100,9 @@ function submitForm() {
     });
     // Remove empty nodes
     data = trimObject(data);
-    var dumped = jsyaml.safeDump(data);
+    var dumped = jsyaml.safeDump(data, {
+      noArrayIndent: true
+    });
     console.log(dumped);
     $('#add-game-yaml-body').val(dumped);
     $('#yaml-modal').modal();
