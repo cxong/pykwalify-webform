@@ -10,6 +10,10 @@ TODO: include
   name="{{ path }}:csv"
   class="form-control tagsinput"
   {{ "required" if required else "" }}
-  placeholder="Comma to add another"
+  {% if "desc" in schema %}
+    placeholder="{{ schema["desc"]|e }} - comma to add another"
+  {% else %}
+    placeholder="Comma to add another"
+  {% endif %}
 />
 {% endblock %}

@@ -6,5 +6,8 @@
   id="{{ path }}"
   name="{{ path }}"
   {{ "required" if required else "" }}
+  {% if "desc" in schema %}
+    placeholder="{{ schema["desc"]|e }}"
+  {% endif %}
 >
 {% endblock %}

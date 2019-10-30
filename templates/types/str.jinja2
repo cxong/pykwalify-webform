@@ -38,7 +38,7 @@ https://pykwalify.readthedocs.io/en/unstable/validation-rules.html#range
     class="form-control"
     id="{{ path }}"
     name="{{ path }}"
-    {% if schema["range"] %}
+    {% if "range" in schema %}
       {% if "min" in schema["range"] %}
       minlength="{{ schema["range"]["min"] }}"
       {% endif %}
@@ -47,6 +47,9 @@ https://pykwalify.readthedocs.io/en/unstable/validation-rules.html#range
       {% endif %}
     {% endif %}
     {{ "required" if required else "" }}
+    {% if "desc" in schema %}
+      placeholder="{{ schema["desc"]|e }}"
+    {% endif %}
   >
 {% endif %}
 
