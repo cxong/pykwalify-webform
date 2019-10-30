@@ -53,9 +53,7 @@ class Generator:
 
     def _generate(self, stream: TextIO, schema: dict, names: List[str]):
         # TODO: pattern
-        # TODO: req/required
         # TODO: range
-        # TODO: desc
         # TODO: example
 
         # TODO: include

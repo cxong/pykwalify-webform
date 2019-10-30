@@ -1,8 +1,25 @@
 {#
-TODO: include
+TODO: multiple sequences?
 #}
 {% extends "form_group.jinja2" %}
 {% block control %}
+
+{% set sequence = schema["sequence"][0] if "sequence" in schema else None %}
+{# TODO MAX_CHECKBOXES #}
+{% if sequence and "enum" in sequence and sequence.get("unique", False) %}
+  {% for value in sequence["enum"] %}
+    <div class="form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="{{ path }}.{{ value }}"
+        name="{{ path }}[]" value="{{ value }}"
+        {{ "required" if required else "" }}
+      >
+      <label for="{{ path }}.{{ value }}" class="form-check-label">{{ value }}</label>
+    </div>
+  {% endfor %}
+{% else %}
 <input
   type="text"
   {% if not schema.get("unique") %}data-allow-duplicates{% endif %}
@@ -16,4 +33,6 @@ TODO: include
     placeholder="Comma to add another"
   {% endif %}
 />
+{% endif %}
+
 {% endblock %}
