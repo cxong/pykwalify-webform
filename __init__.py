@@ -82,7 +82,6 @@ class Generator:
             )
 
         # TODO: bool
-        # TODO: date
         # TODO: float
         # TODO: time
         # TODO: timestamp

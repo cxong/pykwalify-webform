@@ -1,4 +1,7 @@
-{# TODO: range #}
+{#
+TODO: range min-ex max-ex
+https://pykwalify.readthedocs.io/en/unstable/validation-rules.html#range
+#}
 {% extends "form_group.jinja2" %}
 {% block control %}
 
@@ -35,6 +38,14 @@
     class="form-control"
     id="{{ path }}"
     name="{{ path }}"
+    {% if schema["range"] %}
+      {% if "min" in schema["range"] %}
+      minlength="{{ schema["range"]["min"] }}"
+      {% endif %}
+      {% if "max" in schema["range"] %}
+      maxlength="{{ schema["range"]["max"] }}"
+      {% endif %}
+    {% endif %}
     {{ "required" if required else "" }}
   >
 {% endif %}
