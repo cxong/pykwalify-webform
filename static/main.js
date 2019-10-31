@@ -1,6 +1,6 @@
 function submitForm() {
   var $form = $("form");
-  if ($form.get()[0].checkValidity()) {
+  if (validate($form)) {
     // https://github.com/marioizquierdo/jquery.serializeJSON
     var data = $form.serializeJSON({
       customTypes: {
@@ -25,6 +25,21 @@ function submitForm() {
     // Form is invalid; let the browser's built in validation show
     return true;
   }
+}
+
+function validate($form) {
+  // Check required for multiple checkboxes
+  var valid = true;
+  $form.find('.checkbox-group-required').each(function(i, elem) {
+    $(elem).find(':checkbox').removeAttr('required');
+    if ($(elem).find(':checkbox:checked').length === 0) {
+      // Set one of them to required to use the browser's own validation message
+      $(elem).find(':checkbox').attr('required', 'required');
+      valid = false;
+    }
+  });
+  valid = valid && $form.get()[0].checkValidity();
+  return valid;
 }
 
 function trimObject(o) {

@@ -6,7 +6,10 @@ TODO: multiple sequences?
 
 {% set sequence = schema["sequence"][0] if "sequence" in schema else None %}
 {# TODO MAX_CHECKBOXES #}
+{# TODO non-unique enum sequences #}
 {% if sequence and "enum" in sequence and sequence.get("unique", False) %}
+  {# Need to use JS to validate required checkbox groups #}
+  <div class="{{ "checkbox-group-required" if required else "" }}">
   {% for value in sequence["enum"] %}
     <div class="form-check">
       <input
@@ -14,11 +17,11 @@ TODO: multiple sequences?
         class="form-check-input"
         id="{{ path }}.{{ value }}"
         name="{{ path }}[]" value="{{ value }}"
-        {{ "required" if required else "" }}
       >
       <label for="{{ path }}.{{ value }}" class="form-check-label">{{ value }}</label>
     </div>
   {% endfor %}
+  </div>
 {% else %}
 <input
   type="text"

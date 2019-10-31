@@ -56,9 +56,15 @@ class Generator:
         # TODO: range
         # TODO: example
 
-        # TODO: include
         schema_type = schema.get("type", "str")
         schema_type = self.TYPE_ALIASES.get(schema_type, schema_type)
+        # TODO: multiple sequences
+        if schema_type == "seq":
+            schema_seq = schema["sequence"]
+            if "include" in schema_seq[0]:
+                # Copy partial schema in
+                for k, v in self._schemata[f"schema;{schema_seq[0]['include']}"].items():
+                    schema_seq[0][k] = v
         required = schema.get("req", False) or schema.get("required", False)
 
         # TODO: use template inheritance for composite types
