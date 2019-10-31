@@ -56,15 +56,16 @@ class Generator:
         # TODO: range
         # TODO: example
 
+        if "include" in schema:
+            self._include(schema)
+
         schema_type = schema.get("type", "str")
         schema_type = self.TYPE_ALIASES.get(schema_type, schema_type)
         # TODO: multiple sequences
         if schema_type == "seq":
             schema_seq = schema["sequence"]
             if "include" in schema_seq[0]:
-                # Copy partial schema in
-                for k, v in self._schemata[f"schema;{schema_seq[0]['include']}"].items():
-                    schema_seq[0][k] = v
+                self._include(schema_seq[0])
         required = schema.get("req", False) or schema.get("required", False)
 
         # TODO: use template inheritance for composite types
@@ -89,6 +90,11 @@ class Generator:
         # TODO: float
         # TODO: time
         # TODO: timestamp
+
+    def _include(self, schema):
+        # Copy partial schema in
+        for k, v in self._schemata[f"schema;{schema['include']}"].items():
+            schema[k] = v
 
     def _load_template_file(self, filename: str):
         return self._env.get_template(filename)
