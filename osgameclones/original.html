@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha256-siyOpF/pBWUPgIcQi17TLBkjvNgNQArcmwJB8YvkAgg=" crossorigin="anonymous" />
+  <link href="/pykwalify-webform/static/tagsinput/tagsinput.css" rel="stylesheet" type="text/css">
+  <title> form</title>
+</head>
+<body>
+<div class="container">
+<div class="card">
+<form>
+
+
+<div class="card-header">
+<div class="row">
+  <div class="col">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#schemaModal">
+      YAML schema 🔗
+    </button>
+  </div>
+  <div class="modal fade" id="schemaModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">YAML schema</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <pre><code>
+            schema;genres:
+  enum: &id001
+  - Action
+  - Adventure
+  - Arcade
+  - Artillery
+  - Card Game
+  - Compilation
+  - Educational
+  - Fighting
+  - Flight
+  - FPS
+  - MMORPG
+  - MOBA
+  - Party
+  - Platform
+  - Puzzle
+  - Racing
+  - RPG
+  - RTS
+  - Real-Time Tactics
+  - Sports
+  - TBS
+  - Turn-Based Tactics
+  - TPS
+  - Rhythm
+  - Roguelike
+  - Shooter
+  - Shmup
+  - Simulation
+  - Strategy
+  type: str
+schema;meta:
+  mapping: &id004
+    genre:
+      sequence:
+      - enum: *id001
+        include: genres
+        type: str
+        unique: true
+      type: seq
+    subgenre:
+      sequence:
+      - enum: &id002
+        - 4X
+        - Action RPG
+        - Baseball
+        - Basketball
+        - Billiards
+        - Board Game
+        - Bowling
+        - Boxing
+        - Bullet Hell
+        - Card Game
+        - City Building
+        - Cricket
+        - Dual-Joystick Shooter
+        - Fishing
+        - Fitness
+        - Flight Simulator
+        - Football
+        - Gambling
+        - Golf
+        - Handball
+        - Hockey
+        - Life
+        - Light-Gun Shooter
+        - Pinball
+        - Run and gun
+        - Sandbox
+        - Skateboarding
+        - Skiing
+        - Snowboarding
+        - Soccer
+        - Space Flight
+        - Surfing
+        - Submarine Simulator
+        - Survival
+        - Tennis
+        - Text Adventure
+        - Tower Defense
+        - Track & Field
+        - Train Simulator
+        - Turn-Based Strategy
+        - Turn-Based Tactics
+        - Vehicular Combat
+        - Volleyball
+        - Wrestling
+        include: subgenres
+        type: str
+        unique: true
+      type: seq
+    theme:
+      sequence:
+      - enum: &id003
+        - Abstract
+        - Adult
+        - Alternate Historical
+        - Anime
+        - Aquatic
+        - Civil War
+        - Comedy
+        - Comic Book
+        - Crime
+        - Cyberpunk
+        - Dating
+        - Egyptian
+        - Espionage
+        - Fantasy
+        - Game Show
+        - Horror
+        - Management
+        - Martial Arts
+        - Mayan
+        - Medieval
+        - Meditative
+        - Modern Military
+        - Motorsports
+        - Post-Apocalyptic
+        - Prehistoric
+        - Sci-Fi
+        - Steampunk
+        - Superhero
+        - Vietnam
+        - Western
+        - World War I
+        - World War II
+        include: themes
+        type: str
+        unique: true
+      type: seq
+  type: map
+schema;platform:
+  enum: &id005
+  - Amiga
+  - Amstrad CPC
+  - Apple II
+  - Arcade
+  - Atari
+  - Commodore 64
+  - DOS
+  - DS
+  - Linux
+  - Mobile
+  - N64
+  - OSX
+  - PlayStation
+  - PlayStation 3
+  - Saturn
+  - Web
+  - Windows
+  - Xbox 360
+  - ZX Spectrum
+  type: str
+schema;subgenres:
+  enum: *id002
+  type: str
+schema;themes:
+  enum: *id003
+  type: str
+sequence:
+- mapping:
+    external:
+      mapping:
+        website:
+          type: str
+        wikipedia:
+          type: str
+      required: true
+      type: map
+    meta:
+      include: meta
+      mapping: *id004
+      type: map
+    name:
+      required: true
+      type: str
+    names:
+      sequence:
+      - type: str
+      type: seq
+    platform:
+      sequence:
+      - enum: *id005
+        include: platform
+        type: str
+        unique: true
+      type: seq
+  type: map
+type: seq
+
+          </code></pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="card-body">
+  <div class="card">
+  <div class="card-header">Sequence</div>
+  <div class="card-body">
+    
+<div class="form-group row">
+  
+    <label for="[name]" class="col-sm-2 col-form-label">
+      Name
+    </label>
+    <div class="col-sm-10">
+      
+
+
+
+  <input
+    type="text"
+    class="form-control"
+    id="[name]"
+    name="[name]"
+    
+    required
+    
+  >
+
+
+
+    </div>
+  
+</div>
+<div class="form-group row">
+  
+    <label for="[names]" class="col-sm-2 col-form-label">
+      Names
+    </label>
+    <div class="col-sm-10">
+      
+
+
+
+
+
+<input
+  type="text"
+  data-allow-duplicates
+  id="[names]"
+  name="[names]:csv"
+  class="form-control tagsinput"
+  
+  
+    placeholder="Comma to add another"
+  
+/>
+
+
+
+    </div>
+  
+</div><div class="card">
+  <div class="card-header">External</div>
+  <div class="card-body">
+    
+<div class="form-group row">
+  
+    <label for="[external][website]" class="col-sm-2 col-form-label">
+      Website
+    </label>
+    <div class="col-sm-10">
+      
+
+
+
+  <input
+    type="text"
+    class="form-control"
+    id="[external][website]"
+    name="[external][website]"
+    
+    
+    
+  >
+
+
+
+    </div>
+  
+</div>
+<div class="form-group row">
+  
+    <label for="[external][wikipedia]" class="col-sm-2 col-form-label">
+      Wikipedia
+    </label>
+    <div class="col-sm-10">
+      
+
+
+
+  <input
+    type="text"
+    class="form-control"
+    id="[external][wikipedia]"
+    name="[external][wikipedia]"
+    
+    
+    
+  >
+
+
+
+    </div>
+  
+</div>
+  </div>
+</div>
+<div class="form-group row">
+  
+    <label for="[platform]" class="col-sm-2 col-form-label">
+      Platform
+    </label>
+    <div class="col-sm-10">
+      
+
+
+
+
+
+  
+  <div class="">
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Amiga"
+        name="[platform][]" value="Amiga"
+      >
+      <label for="[platform].Amiga" class="form-check-label">Amiga</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Amstrad CPC"
+        name="[platform][]" value="Amstrad CPC"
+      >
+      <label for="[platform].Amstrad CPC" class="form-check-label">Amstrad CPC</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Apple II"
+        name="[platform][]" value="Apple II"
+      >
+      <label for="[platform].Apple II" class="form-check-label">Apple II</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Arcade"
+        name="[platform][]" value="Arcade"
+      >
+      <label for="[platform].Arcade" class="form-check-label">Arcade</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Atari"
+        name="[platform][]" value="Atari"
+      >
+      <label for="[platform].Atari" class="form-check-label">Atari</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Commodore 64"
+        name="[platform][]" value="Commodore 64"
+      >
+      <label for="[platform].Commodore 64" class="form-check-label">Commodore 64</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].DOS"
+        name="[platform][]" value="DOS"
+      >
+      <label for="[platform].DOS" class="form-check-label">DOS</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].DS"
+        name="[platform][]" value="DS"
+      >
+      <label for="[platform].DS" class="form-check-label">DS</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Linux"
+        name="[platform][]" value="Linux"
+      >
+      <label for="[platform].Linux" class="form-check-label">Linux</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Mobile"
+        name="[platform][]" value="Mobile"
+      >
+      <label for="[platform].Mobile" class="form-check-label">Mobile</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].N64"
+        name="[platform][]" value="N64"
+      >
+      <label for="[platform].N64" class="form-check-label">N64</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].OSX"
+        name="[platform][]" value="OSX"
+      >
+      <label for="[platform].OSX" class="form-check-label">OSX</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].PlayStation"
+        name="[platform][]" value="PlayStation"
+      >
+      <label for="[platform].PlayStation" class="form-check-label">PlayStation</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].PlayStation 3"
+        name="[platform][]" value="PlayStation 3"
+      >
+      <label for="[platform].PlayStation 3" class="form-check-label">PlayStation 3</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Saturn"
+        name="[platform][]" value="Saturn"
+      >
+      <label for="[platform].Saturn" class="form-check-label">Saturn</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Web"
+        name="[platform][]" value="Web"
+      >
+      <label for="[platform].Web" class="form-check-label">Web</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Windows"
+        name="[platform][]" value="Windows"
+      >
+      <label for="[platform].Windows" class="form-check-label">Windows</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Xbox 360"
+        name="[platform][]" value="Xbox 360"
+      >
+      <label for="[platform].Xbox 360" class="form-check-label">Xbox 360</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].ZX Spectrum"
+        name="[platform][]" value="ZX Spectrum"
+      >
+      <label for="[platform].ZX Spectrum" class="form-check-label">ZX Spectrum</label>
+    </div>
+  
+  </div>
+
+
+
+    </div>
+  
+</div><div class="card">
+  <div class="card-header">Meta</div>
+  <div class="card-body">
+    
+<div class="form-group row">
+  
+    <label for="[meta][genre]" class="col-sm-2 col-form-label">
+      Genre
+    </label>
+    <div class="col-sm-10">
+      
+
+
+
+
+
+  
+  <div class="">
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Action"
+        name="[meta][genre][]" value="Action"
+      >
+      <label for="[meta][genre].Action" class="form-check-label">Action</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Adventure"
+        name="[meta][genre][]" value="Adventure"
+      >
+      <label for="[meta][genre].Adventure" class="form-check-label">Adventure</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Arcade"
+        name="[meta][genre][]" value="Arcade"
+      >
+      <label for="[meta][genre].Arcade" class="form-check-label">Arcade</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Artillery"
+        name="[meta][genre][]" value="Artillery"
+      >
+      <label for="[meta][genre].Artillery" class="form-check-label">Artillery</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Card Game"
+        name="[meta][genre][]" value="Card Game"
+      >
+      <label for="[meta][genre].Card Game" class="form-check-label">Card Game</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Compilation"
+        name="[meta][genre][]" value="Compilation"
+      >
+      <label for="[meta][genre].Compilation" class="form-check-label">Compilation</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Educational"
+        name="[meta][genre][]" value="Educational"
+      >
+      <label for="[meta][genre].Educational" class="form-check-label">Educational</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Fighting"
+        name="[meta][genre][]" value="Fighting"
+      >
+      <label for="[meta][genre].Fighting" class="form-check-label">Fighting</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Flight"
+        name="[meta][genre][]" value="Flight"
+      >
+      <label for="[meta][genre].Flight" class="form-check-label">Flight</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].FPS"
+        name="[meta][genre][]" value="FPS"
+      >
+      <label for="[meta][genre].FPS" class="form-check-label">FPS</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].MMORPG"
+        name="[meta][genre][]" value="MMORPG"
+      >
+      <label for="[meta][genre].MMORPG" class="form-check-label">MMORPG</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].MOBA"
+        name="[meta][genre][]" value="MOBA"
+      >
+      <label for="[meta][genre].MOBA" class="form-check-label">MOBA</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Party"
+        name="[meta][genre][]" value="Party"
+      >
+      <label for="[meta][genre].Party" class="form-check-label">Party</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Platform"
+        name="[meta][genre][]" value="Platform"
+      >
+      <label for="[meta][genre].Platform" class="form-check-label">Platform</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Puzzle"
+        name="[meta][genre][]" value="Puzzle"
+      >
+      <label for="[meta][genre].Puzzle" class="form-check-label">Puzzle</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Racing"
+        name="[meta][genre][]" value="Racing"
+      >
+      <label for="[meta][genre].Racing" class="form-check-label">Racing</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].RPG"
+        name="[meta][genre][]" value="RPG"
+      >
+      <label for="[meta][genre].RPG" class="form-check-label">RPG</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].RTS"
+        name="[meta][genre][]" value="RTS"
+      >
+      <label for="[meta][genre].RTS" class="form-check-label">RTS</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Real-Time Tactics"
+        name="[meta][genre][]" value="Real-Time Tactics"
+      >
+      <label for="[meta][genre].Real-Time Tactics" class="form-check-label">Real-Time Tactics</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Sports"
+        name="[meta][genre][]" value="Sports"
+      >
+      <label for="[meta][genre].Sports" class="form-check-label">Sports</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].TBS"
+        name="[meta][genre][]" value="TBS"
+      >
+      <label for="[meta][genre].TBS" class="form-check-label">TBS</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Turn-Based Tactics"
+        name="[meta][genre][]" value="Turn-Based Tactics"
+      >
+      <label for="[meta][genre].Turn-Based Tactics" class="form-check-label">Turn-Based Tactics</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].TPS"
+        name="[meta][genre][]" value="TPS"
+      >
+      <label for="[meta][genre].TPS" class="form-check-label">TPS</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Rhythm"
+        name="[meta][genre][]" value="Rhythm"
+      >
+      <label for="[meta][genre].Rhythm" class="form-check-label">Rhythm</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Roguelike"
+        name="[meta][genre][]" value="Roguelike"
+      >
+      <label for="[meta][genre].Roguelike" class="form-check-label">Roguelike</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Shooter"
+        name="[meta][genre][]" value="Shooter"
+      >
+      <label for="[meta][genre].Shooter" class="form-check-label">Shooter</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Shmup"
+        name="[meta][genre][]" value="Shmup"
+      >
+      <label for="[meta][genre].Shmup" class="form-check-label">Shmup</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Simulation"
+        name="[meta][genre][]" value="Simulation"
+      >
+      <label for="[meta][genre].Simulation" class="form-check-label">Simulation</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][genre].Strategy"
+        name="[meta][genre][]" value="Strategy"
+      >
+      <label for="[meta][genre].Strategy" class="form-check-label">Strategy</label>
+    </div>
+  
+  </div>
+
+
+
+    </div>
+  
+</div>
+<div class="form-group row">
+  
+    <label for="[meta][subgenre]" class="col-sm-2 col-form-label">
+      Subgenre
+    </label>
+    <div class="col-sm-10">
+      
+
+
+
+
+
+  
+  <div class="">
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].4X"
+        name="[meta][subgenre][]" value="4X"
+      >
+      <label for="[meta][subgenre].4X" class="form-check-label">4X</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Action RPG"
+        name="[meta][subgenre][]" value="Action RPG"
+      >
+      <label for="[meta][subgenre].Action RPG" class="form-check-label">Action RPG</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Baseball"
+        name="[meta][subgenre][]" value="Baseball"
+      >
+      <label for="[meta][subgenre].Baseball" class="form-check-label">Baseball</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Basketball"
+        name="[meta][subgenre][]" value="Basketball"
+      >
+      <label for="[meta][subgenre].Basketball" class="form-check-label">Basketball</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Billiards"
+        name="[meta][subgenre][]" value="Billiards"
+      >
+      <label for="[meta][subgenre].Billiards" class="form-check-label">Billiards</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Board Game"
+        name="[meta][subgenre][]" value="Board Game"
+      >
+      <label for="[meta][subgenre].Board Game" class="form-check-label">Board Game</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Bowling"
+        name="[meta][subgenre][]" value="Bowling"
+      >
+      <label for="[meta][subgenre].Bowling" class="form-check-label">Bowling</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Boxing"
+        name="[meta][subgenre][]" value="Boxing"
+      >
+      <label for="[meta][subgenre].Boxing" class="form-check-label">Boxing</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Bullet Hell"
+        name="[meta][subgenre][]" value="Bullet Hell"
+      >
+      <label for="[meta][subgenre].Bullet Hell" class="form-check-label">Bullet Hell</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Card Game"
+        name="[meta][subgenre][]" value="Card Game"
+      >
+      <label for="[meta][subgenre].Card Game" class="form-check-label">Card Game</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].City Building"
+        name="[meta][subgenre][]" value="City Building"
+      >
+      <label for="[meta][subgenre].City Building" class="form-check-label">City Building</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Cricket"
+        name="[meta][subgenre][]" value="Cricket"
+      >
+      <label for="[meta][subgenre].Cricket" class="form-check-label">Cricket</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Dual-Joystick Shooter"
+        name="[meta][subgenre][]" value="Dual-Joystick Shooter"
+      >
+      <label for="[meta][subgenre].Dual-Joystick Shooter" class="form-check-label">Dual-Joystick Shooter</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Fishing"
+        name="[meta][subgenre][]" value="Fishing"
+      >
+      <label for="[meta][subgenre].Fishing" class="form-check-label">Fishing</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Fitness"
+        name="[meta][subgenre][]" value="Fitness"
+      >
+      <label for="[meta][subgenre].Fitness" class="form-check-label">Fitness</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Flight Simulator"
+        name="[meta][subgenre][]" value="Flight Simulator"
+      >
+      <label for="[meta][subgenre].Flight Simulator" class="form-check-label">Flight Simulator</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Football"
+        name="[meta][subgenre][]" value="Football"
+      >
+      <label for="[meta][subgenre].Football" class="form-check-label">Football</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Gambling"
+        name="[meta][subgenre][]" value="Gambling"
+      >
+      <label for="[meta][subgenre].Gambling" class="form-check-label">Gambling</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Golf"
+        name="[meta][subgenre][]" value="Golf"
+      >
+      <label for="[meta][subgenre].Golf" class="form-check-label">Golf</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Handball"
+        name="[meta][subgenre][]" value="Handball"
+      >
+      <label for="[meta][subgenre].Handball" class="form-check-label">Handball</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Hockey"
+        name="[meta][subgenre][]" value="Hockey"
+      >
+      <label for="[meta][subgenre].Hockey" class="form-check-label">Hockey</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Life"
+        name="[meta][subgenre][]" value="Life"
+      >
+      <label for="[meta][subgenre].Life" class="form-check-label">Life</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Light-Gun Shooter"
+        name="[meta][subgenre][]" value="Light-Gun Shooter"
+      >
+      <label for="[meta][subgenre].Light-Gun Shooter" class="form-check-label">Light-Gun Shooter</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Pinball"
+        name="[meta][subgenre][]" value="Pinball"
+      >
+      <label for="[meta][subgenre].Pinball" class="form-check-label">Pinball</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Run and gun"
+        name="[meta][subgenre][]" value="Run and gun"
+      >
+      <label for="[meta][subgenre].Run and gun" class="form-check-label">Run and gun</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Sandbox"
+        name="[meta][subgenre][]" value="Sandbox"
+      >
+      <label for="[meta][subgenre].Sandbox" class="form-check-label">Sandbox</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Skateboarding"
+        name="[meta][subgenre][]" value="Skateboarding"
+      >
+      <label for="[meta][subgenre].Skateboarding" class="form-check-label">Skateboarding</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Skiing"
+        name="[meta][subgenre][]" value="Skiing"
+      >
+      <label for="[meta][subgenre].Skiing" class="form-check-label">Skiing</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Snowboarding"
+        name="[meta][subgenre][]" value="Snowboarding"
+      >
+      <label for="[meta][subgenre].Snowboarding" class="form-check-label">Snowboarding</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Soccer"
+        name="[meta][subgenre][]" value="Soccer"
+      >
+      <label for="[meta][subgenre].Soccer" class="form-check-label">Soccer</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Space Flight"
+        name="[meta][subgenre][]" value="Space Flight"
+      >
+      <label for="[meta][subgenre].Space Flight" class="form-check-label">Space Flight</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Surfing"
+        name="[meta][subgenre][]" value="Surfing"
+      >
+      <label for="[meta][subgenre].Surfing" class="form-check-label">Surfing</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Submarine Simulator"
+        name="[meta][subgenre][]" value="Submarine Simulator"
+      >
+      <label for="[meta][subgenre].Submarine Simulator" class="form-check-label">Submarine Simulator</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Survival"
+        name="[meta][subgenre][]" value="Survival"
+      >
+      <label for="[meta][subgenre].Survival" class="form-check-label">Survival</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Tennis"
+        name="[meta][subgenre][]" value="Tennis"
+      >
+      <label for="[meta][subgenre].Tennis" class="form-check-label">Tennis</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Text Adventure"
+        name="[meta][subgenre][]" value="Text Adventure"
+      >
+      <label for="[meta][subgenre].Text Adventure" class="form-check-label">Text Adventure</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Tower Defense"
+        name="[meta][subgenre][]" value="Tower Defense"
+      >
+      <label for="[meta][subgenre].Tower Defense" class="form-check-label">Tower Defense</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Track & Field"
+        name="[meta][subgenre][]" value="Track & Field"
+      >
+      <label for="[meta][subgenre].Track & Field" class="form-check-label">Track & Field</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Train Simulator"
+        name="[meta][subgenre][]" value="Train Simulator"
+      >
+      <label for="[meta][subgenre].Train Simulator" class="form-check-label">Train Simulator</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Turn-Based Strategy"
+        name="[meta][subgenre][]" value="Turn-Based Strategy"
+      >
+      <label for="[meta][subgenre].Turn-Based Strategy" class="form-check-label">Turn-Based Strategy</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Turn-Based Tactics"
+        name="[meta][subgenre][]" value="Turn-Based Tactics"
+      >
+      <label for="[meta][subgenre].Turn-Based Tactics" class="form-check-label">Turn-Based Tactics</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Vehicular Combat"
+        name="[meta][subgenre][]" value="Vehicular Combat"
+      >
+      <label for="[meta][subgenre].Vehicular Combat" class="form-check-label">Vehicular Combat</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Volleyball"
+        name="[meta][subgenre][]" value="Volleyball"
+      >
+      <label for="[meta][subgenre].Volleyball" class="form-check-label">Volleyball</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Wrestling"
+        name="[meta][subgenre][]" value="Wrestling"
+      >
+      <label for="[meta][subgenre].Wrestling" class="form-check-label">Wrestling</label>
+    </div>
+  
+  </div>
+
+
+
+    </div>
+  
+</div>
+<div class="form-group row">
+  
+    <label for="[meta][theme]" class="col-sm-2 col-form-label">
+      Theme
+    </label>
+    <div class="col-sm-10">
+      
+
+
+
+
+
+  
+  <div class="">
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Abstract"
+        name="[meta][theme][]" value="Abstract"
+      >
+      <label for="[meta][theme].Abstract" class="form-check-label">Abstract</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Adult"
+        name="[meta][theme][]" value="Adult"
+      >
+      <label for="[meta][theme].Adult" class="form-check-label">Adult</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Alternate Historical"
+        name="[meta][theme][]" value="Alternate Historical"
+      >
+      <label for="[meta][theme].Alternate Historical" class="form-check-label">Alternate Historical</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Anime"
+        name="[meta][theme][]" value="Anime"
+      >
+      <label for="[meta][theme].Anime" class="form-check-label">Anime</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Aquatic"
+        name="[meta][theme][]" value="Aquatic"
+      >
+      <label for="[meta][theme].Aquatic" class="form-check-label">Aquatic</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Civil War"
+        name="[meta][theme][]" value="Civil War"
+      >
+      <label for="[meta][theme].Civil War" class="form-check-label">Civil War</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Comedy"
+        name="[meta][theme][]" value="Comedy"
+      >
+      <label for="[meta][theme].Comedy" class="form-check-label">Comedy</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Comic Book"
+        name="[meta][theme][]" value="Comic Book"
+      >
+      <label for="[meta][theme].Comic Book" class="form-check-label">Comic Book</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Crime"
+        name="[meta][theme][]" value="Crime"
+      >
+      <label for="[meta][theme].Crime" class="form-check-label">Crime</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Cyberpunk"
+        name="[meta][theme][]" value="Cyberpunk"
+      >
+      <label for="[meta][theme].Cyberpunk" class="form-check-label">Cyberpunk</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Dating"
+        name="[meta][theme][]" value="Dating"
+      >
+      <label for="[meta][theme].Dating" class="form-check-label">Dating</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Egyptian"
+        name="[meta][theme][]" value="Egyptian"
+      >
+      <label for="[meta][theme].Egyptian" class="form-check-label">Egyptian</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Espionage"
+        name="[meta][theme][]" value="Espionage"
+      >
+      <label for="[meta][theme].Espionage" class="form-check-label">Espionage</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Fantasy"
+        name="[meta][theme][]" value="Fantasy"
+      >
+      <label for="[meta][theme].Fantasy" class="form-check-label">Fantasy</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Game Show"
+        name="[meta][theme][]" value="Game Show"
+      >
+      <label for="[meta][theme].Game Show" class="form-check-label">Game Show</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Horror"
+        name="[meta][theme][]" value="Horror"
+      >
+      <label for="[meta][theme].Horror" class="form-check-label">Horror</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Management"
+        name="[meta][theme][]" value="Management"
+      >
+      <label for="[meta][theme].Management" class="form-check-label">Management</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Martial Arts"
+        name="[meta][theme][]" value="Martial Arts"
+      >
+      <label for="[meta][theme].Martial Arts" class="form-check-label">Martial Arts</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Mayan"
+        name="[meta][theme][]" value="Mayan"
+      >
+      <label for="[meta][theme].Mayan" class="form-check-label">Mayan</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Medieval"
+        name="[meta][theme][]" value="Medieval"
+      >
+      <label for="[meta][theme].Medieval" class="form-check-label">Medieval</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Meditative"
+        name="[meta][theme][]" value="Meditative"
+      >
+      <label for="[meta][theme].Meditative" class="form-check-label">Meditative</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Modern Military"
+        name="[meta][theme][]" value="Modern Military"
+      >
+      <label for="[meta][theme].Modern Military" class="form-check-label">Modern Military</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Motorsports"
+        name="[meta][theme][]" value="Motorsports"
+      >
+      <label for="[meta][theme].Motorsports" class="form-check-label">Motorsports</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Post-Apocalyptic"
+        name="[meta][theme][]" value="Post-Apocalyptic"
+      >
+      <label for="[meta][theme].Post-Apocalyptic" class="form-check-label">Post-Apocalyptic</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Prehistoric"
+        name="[meta][theme][]" value="Prehistoric"
+      >
+      <label for="[meta][theme].Prehistoric" class="form-check-label">Prehistoric</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Sci-Fi"
+        name="[meta][theme][]" value="Sci-Fi"
+      >
+      <label for="[meta][theme].Sci-Fi" class="form-check-label">Sci-Fi</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Steampunk"
+        name="[meta][theme][]" value="Steampunk"
+      >
+      <label for="[meta][theme].Steampunk" class="form-check-label">Steampunk</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Superhero"
+        name="[meta][theme][]" value="Superhero"
+      >
+      <label for="[meta][theme].Superhero" class="form-check-label">Superhero</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Vietnam"
+        name="[meta][theme][]" value="Vietnam"
+      >
+      <label for="[meta][theme].Vietnam" class="form-check-label">Vietnam</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].Western"
+        name="[meta][theme][]" value="Western"
+      >
+      <label for="[meta][theme].Western" class="form-check-label">Western</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].World War I"
+        name="[meta][theme][]" value="World War I"
+      >
+      <label for="[meta][theme].World War I" class="form-check-label">World War I</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][theme].World War II"
+        name="[meta][theme][]" value="World War II"
+      >
+      <label for="[meta][theme].World War II" class="form-check-label">World War II</label>
+    </div>
+  
+  </div>
+
+
+
+    </div>
+  
+</div>
+  </div>
+</div>
+  </div>
+</div>
+</div>
+<div class="card-footer">
+  <button type="submit" class="btn btn-primary" onclick="return submitForm()">Get Code</button>
+  <div class="modal fade" id="yaml-modal" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-label">Add Code</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <textarea class="form-control" id="add-game-yaml-body" style="font-family:monospace;" rows="10">...</textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="copy()">Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</form>
+</div>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/2.9.0/jquery.serializejson.js" integrity="sha256-UzGjnR1p5Tnl9uHyGcbtthS4cULTf5z28PXVxHVElSQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.min.js" integrity="sha256-ry6nlLQ1JmRl5RUPQ4eSuaSp/rGNPvl144WHHs7BiNE=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.5/jquery.csv.min.js" integrity="sha256-zGo0JbZ5Sn6wU76MyVL0TrUZUq5GLXaFnMQCe/hSwVI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha256-bqVeqGdJ7h/lYPq6xrPv/YGzMEb6dNxlfiTUHSgRCp8=" crossorigin="anonymous"></script>
+<script src="/pykwalify-webform/static/tagsinput/tagsinput.js"></script>
+<script src="/pykwalify-webform/static/main.js"></script>
+</body>
+</html>
