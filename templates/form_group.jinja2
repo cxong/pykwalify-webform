@@ -1,6 +1,6 @@
 <div class="form-group">
   {% block content %}
-    <label for="{{ path }}">{{ name }}</label>
+    <label for="{{ path }}">{{ name|title }}</label>
     {% block control %}{% endblock %}
   {% endblock %}
 </div>

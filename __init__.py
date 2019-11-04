@@ -69,22 +69,23 @@ class Generator:
         required = schema.get("req", False) or schema.get("required", False)
 
         # TODO: use template inheritance for composite types
-        if schema_type in {"map", "mapping"}:
+        sub_stream = StringIO()
+        if schema_type == "map":
             # TODO: allowempty
             # TODO: matching-rule
             # TODO: regex;(regex-pattern)/re;(regex-pattern)
             for mapping in schema["mapping"]:
-                self._generate(stream, schema["mapping"][mapping], names + [mapping])
-        else:
-            template = self._templates[schema_type]
-            stream.write(
-                template.render(
-                    name=names[-1],
-                    path="".join((f"[{name}]" for name in names[1:])),
-                    required=required,
-                    schema=schema
-                )
+                self._generate(sub_stream, schema["mapping"][mapping], names + [mapping])
+        template = self._templates[schema_type]
+        stream.write(
+            template.render(
+                name=names[-1],
+                path="".join((f"[{name}]" for name in names[1:])),
+                required=required,
+                contents=sub_stream.getvalue(),
+                schema=schema
             )
+        )
 
         # TODO: bool
         # TODO: float

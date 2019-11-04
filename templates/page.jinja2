@@ -10,8 +10,11 @@
 </head>
 <body>
 <div class="container">
+<div class="card">
+<form>
 
 {# Schema modal #}
+<div class="card-header">
 <div class="row">
   <div class="col">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#schemaModal">
@@ -39,12 +42,13 @@
     </div>
   </div>
 </div>
+</div>
 
 {# Main content #}
-<div class="row">
-<div class="col">
-<form>
+<div class="card-body">
   {{ contents }}
+</div>
+<div class="card-footer">
   <button type="submit" class="btn btn-primary" onclick="return submitForm()">Get Code</button>
   <div class="modal fade" id="yaml-modal" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -69,8 +73,9 @@
       </div>
     </div>
   </div>
-</form>
 </div>
+
+</form>
 </div>
 </div>
 <script
