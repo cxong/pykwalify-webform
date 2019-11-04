@@ -5,13 +5,13 @@ TODO: multiple sequences?
 {% block control %}
 
 {% set sequence = schema["sequence"][0] if "sequence" in schema else None %}
-{# TODO MAX_CHECKBOXES #}
+{% set MAX_CHECKBOXES = 5 %}
 {# TODO non-unique enum sequences #}
 {% if sequence and "enum" in sequence and sequence.get("unique", False) %}
   {# Need to use JS to validate required checkbox groups #}
   <div class="{{ "checkbox-group-required" if required else "" }}">
   {% for value in sequence["enum"] %}
-    <div class="form-check">
+    <div class="form-check{{ " form-check-inline" if sequence["enum"]|length > MAX_CHECKBOXES else "" }}">
       <input
         type="checkbox"
         class="form-check-input"
