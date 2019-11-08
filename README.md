@@ -3,3 +3,8 @@
 ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/cxong/pykwalify-webform)
 
 Generate webforms based on YAML schema with pykwalify
+
+## Examples
+
+- **osgameclones Game form**: https://cxong.github.io/pykwalify-webform/osgameclones/game.html
+- **osgameclones Original Game form**: https://cxong.github.io/pykwalify-webform/osgameclones/original.html
