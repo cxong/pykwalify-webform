@@ -4,6 +4,8 @@
 
 Generate webforms based on YAML schema with pykwalify
 
+![Screenshot](https://github.com/cxong/pykwalify-webform/blob/master/screen.png?raw=true)
+
 ## Examples
 
 - **osgameclones Game form**: https://cxong.github.io/pykwalify-webform/osgameclones/game.html
