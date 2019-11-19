@@ -31,7 +31,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <pre><code>
+          <pre class="prettyprint">
             schema;genres:
   enum: &id001
   - Action
@@ -100,6 +100,7 @@ schema;meta:
         - Life
         - Light-Gun Shooter
         - Pinball
+        - Point and click
         - Run and gun
         - Sandbox
         - Skateboarding
@@ -168,6 +169,7 @@ schema;platform:
   enum: &id005
   - Amiga
   - Amstrad CPC
+  - Android
   - Apple II
   - Arcade
   - Atari
@@ -175,16 +177,22 @@ schema;platform:
   - DOS
   - DS
   - GameCube
+  - iOS
   - Linux
   - Mobile
   - N64
+  - Nintendo Switch
   - OSX
   - PlayStation
+  - PlayStation 2
   - PlayStation 3
+  - PlayStation 4
   - Saturn
   - Web
   - Windows
+  - Xbox
   - Xbox 360
+  - Xbox One
   - ZX Spectrum
   type: str
 schema;subgenres:
@@ -224,7 +232,7 @@ sequence:
   type: map
 type: seq
 
-          </code></pre>
+          </pre>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -389,6 +397,16 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[platform].Android"
+        name="[platform][]" value="Android"
+      >
+      <label for="[platform].Android" class="form-check-label">Android</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[platform].Apple II"
         name="[platform][]" value="Apple II"
       >
@@ -459,6 +477,16 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[platform].iOS"
+        name="[platform][]" value="iOS"
+      >
+      <label for="[platform].iOS" class="form-check-label">iOS</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[platform].Linux"
         name="[platform][]" value="Linux"
       >
@@ -489,6 +517,16 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[platform].Nintendo Switch"
+        name="[platform][]" value="Nintendo Switch"
+      >
+      <label for="[platform].Nintendo Switch" class="form-check-label">Nintendo Switch</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[platform].OSX"
         name="[platform][]" value="OSX"
       >
@@ -509,10 +547,30 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[platform].PlayStation 2"
+        name="[platform][]" value="PlayStation 2"
+      >
+      <label for="[platform].PlayStation 2" class="form-check-label">PlayStation 2</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[platform].PlayStation 3"
         name="[platform][]" value="PlayStation 3"
       >
       <label for="[platform].PlayStation 3" class="form-check-label">PlayStation 3</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].PlayStation 4"
+        name="[platform][]" value="PlayStation 4"
+      >
+      <label for="[platform].PlayStation 4" class="form-check-label">PlayStation 4</label>
     </div>
   
     <div class="form-check form-check-inline">
@@ -549,10 +607,30 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[platform].Xbox"
+        name="[platform][]" value="Xbox"
+      >
+      <label for="[platform].Xbox" class="form-check-label">Xbox</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[platform].Xbox 360"
         name="[platform][]" value="Xbox 360"
       >
       <label for="[platform].Xbox 360" class="form-check-label">Xbox 360</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Xbox One"
+        name="[platform][]" value="Xbox One"
+      >
+      <label for="[platform].Xbox One" class="form-check-label">Xbox One</label>
     </div>
   
     <div class="form-check form-check-inline">
@@ -1140,6 +1218,16 @@ type: seq
         name="[meta][subgenre][]" value="Pinball"
       >
       <label for="[meta][subgenre].Pinball" class="form-check-label">Pinball</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenre].Point and click"
+        name="[meta][subgenre][]" value="Point and click"
+      >
+      <label for="[meta][subgenre].Point and click" class="form-check-label">Point and click</label>
     </div>
   
     <div class="form-check form-check-inline">
@@ -1736,6 +1824,7 @@ type: seq
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.min.js" integrity="sha256-ry6nlLQ1JmRl5RUPQ4eSuaSp/rGNPvl144WHHs7BiNE=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.5/jquery.csv.min.js" integrity="sha256-zGo0JbZ5Sn6wU76MyVL0TrUZUq5GLXaFnMQCe/hSwVI=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha256-bqVeqGdJ7h/lYPq6xrPv/YGzMEb6dNxlfiTUHSgRCp8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 <script src="/pykwalify-webform/static/tagsinput/tagsinput.js"></script>
 <script src="/pykwalify-webform/static/main.js"></script>
 </body>

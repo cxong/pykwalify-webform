@@ -31,7 +31,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <pre><code>
+          <pre class="prettyprint">
             schema;game:
   mapping: &id002
     content:
@@ -109,6 +109,7 @@
         - MPL
         - MS-PL
         - NGPL
+        - OFL
         - WTFPL
         - Zlib
         include: licenses
@@ -196,7 +197,7 @@ sequence:
   type: map
 type: seq
 
-          </code></pre>
+          </pre>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1101,6 +1102,16 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[license].OFL"
+        name="[license][]" value="OFL"
+      >
+      <label for="[license].OFL" class="form-check-label">OFL</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[license].WTFPL"
         name="[license][]" value="WTFPL"
       >
@@ -1342,6 +1353,7 @@ type: seq
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.min.js" integrity="sha256-ry6nlLQ1JmRl5RUPQ4eSuaSp/rGNPvl144WHHs7BiNE=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.5/jquery.csv.min.js" integrity="sha256-zGo0JbZ5Sn6wU76MyVL0TrUZUq5GLXaFnMQCe/hSwVI=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha256-bqVeqGdJ7h/lYPq6xrPv/YGzMEb6dNxlfiTUHSgRCp8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 <script src="/pykwalify-webform/static/tagsinput/tagsinput.js"></script>
 <script src="/pykwalify-webform/static/main.js"></script>
 </body>
