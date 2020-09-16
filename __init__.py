@@ -21,9 +21,7 @@ class Generator:
     def __init__(self, schemata: dict, templates_dir: str):
         self._schemata = schemata
 
-        self._env = Environment(
-            loader=FileSystemLoader(templates_dir)
-        )
+        self._env = Environment(loader=FileSystemLoader(templates_dir))
 
         # Load type templates
         self._templates = {}
@@ -75,7 +73,9 @@ class Generator:
             # TODO: matching-rule
             # TODO: regex;(regex-pattern)/re;(regex-pattern)
             for mapping in schema["mapping"]:
-                self._generate(sub_stream, schema["mapping"][mapping], names + [mapping])
+                self._generate(
+                    sub_stream, schema["mapping"][mapping], names + [mapping]
+                )
         template = self._templates[schema_type]
         stream.write(
             template.render(
@@ -83,7 +83,7 @@ class Generator:
                 path="".join((f"[{name}]" for name in names[1:])),
                 required=required,
                 contents=sub_stream.getvalue(),
-                schema=schema
+                schema=schema,
             )
         )
 
