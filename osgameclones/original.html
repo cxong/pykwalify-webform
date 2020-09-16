@@ -51,10 +51,10 @@
   - Puzzle
   - Racing
   - RPG
-  - RTS
+  - Real-Time Strategy
   - Real-Time Tactics
   - Sports
-  - TBS
+  - Turn-Based Strategy
   - Turn-Based Tactics
   - TPS
   - Rhythm
@@ -116,8 +116,6 @@ schema;meta:
         - Tower Defense
         - Track & Field
         - Train Simulator
-        - Turn-Based Strategy
-        - Turn-Based Tactics
         - Vehicular Combat
         - Volleyball
         - Wrestling
@@ -175,11 +173,13 @@ schema;platform:
   - Atari
   - Commodore 64
   - DOS
+  - Dreamcast
   - DS
   - GameCube
   - iOS
   - Linux
   - Mobile
+  - NES
   - N64
   - Nintendo Switch
   - OSX
@@ -187,6 +187,7 @@ schema;platform:
   - PlayStation 2
   - PlayStation 3
   - PlayStation 4
+  - PlayStation Vita
   - Saturn
   - Web
   - Windows
@@ -457,6 +458,16 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[platform].Dreamcast"
+        name="[platform][]" value="Dreamcast"
+      >
+      <label for="[platform].Dreamcast" class="form-check-label">Dreamcast</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[platform].DS"
         name="[platform][]" value="DS"
       >
@@ -501,6 +512,16 @@ type: seq
         name="[platform][]" value="Mobile"
       >
       <label for="[platform].Mobile" class="form-check-label">Mobile</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].NES"
+        name="[platform][]" value="NES"
+      >
+      <label for="[platform].NES" class="form-check-label">NES</label>
     </div>
   
     <div class="form-check form-check-inline">
@@ -571,6 +592,16 @@ type: seq
         name="[platform][]" value="PlayStation 4"
       >
       <label for="[platform].PlayStation 4" class="form-check-label">PlayStation 4</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].PlayStation Vita"
+        name="[platform][]" value="PlayStation Vita"
+      >
+      <label for="[platform].PlayStation Vita" class="form-check-label">PlayStation Vita</label>
     </div>
   
     <div class="form-check form-check-inline">
@@ -842,10 +873,10 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].RTS"
-        name="[meta][genre][]" value="RTS"
+        id="[meta][genre].Real-Time Strategy"
+        name="[meta][genre][]" value="Real-Time Strategy"
       >
-      <label for="[meta][genre].RTS" class="form-check-label">RTS</label>
+      <label for="[meta][genre].Real-Time Strategy" class="form-check-label">Real-Time Strategy</label>
     </div>
   
     <div class="form-check form-check-inline">
@@ -872,10 +903,10 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].TBS"
-        name="[meta][genre][]" value="TBS"
+        id="[meta][genre].Turn-Based Strategy"
+        name="[meta][genre][]" value="Turn-Based Strategy"
       >
-      <label for="[meta][genre].TBS" class="form-check-label">TBS</label>
+      <label for="[meta][genre].Turn-Based Strategy" class="form-check-label">Turn-Based Strategy</label>
     </div>
   
     <div class="form-check form-check-inline">
@@ -1378,26 +1409,6 @@ type: seq
         name="[meta][subgenre][]" value="Train Simulator"
       >
       <label for="[meta][subgenre].Train Simulator" class="form-check-label">Train Simulator</label>
-    </div>
-  
-    <div class="form-check form-check-inline">
-      <input
-        type="checkbox"
-        class="form-check-input"
-        id="[meta][subgenre].Turn-Based Strategy"
-        name="[meta][subgenre][]" value="Turn-Based Strategy"
-      >
-      <label for="[meta][subgenre].Turn-Based Strategy" class="form-check-label">Turn-Based Strategy</label>
-    </div>
-  
-    <div class="form-check form-check-inline">
-      <input
-        type="checkbox"
-        class="form-check-input"
-        id="[meta][subgenre].Turn-Based Tactics"
-        name="[meta][subgenre][]" value="Turn-Based Tactics"
-      >
-      <label for="[meta][subgenre].Turn-Based Tactics" class="form-check-label">Turn-Based Tactics</label>
     </div>
   
     <div class="form-check form-check-inline">
