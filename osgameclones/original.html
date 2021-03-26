@@ -85,7 +85,6 @@ schema;meta:
         - Bowling
         - Boxing
         - Bullet Hell
-        - Card Game
         - City Building
         - Cricket
         - Dual-Joystick Shooter
@@ -175,6 +174,7 @@ schema;platform:
   - DOS
   - Dreamcast
   - DS
+  - Game Boy
   - GameCube
   - iOS
   - Linux
@@ -472,6 +472,16 @@ type: seq
         name="[platform][]" value="DS"
       >
       <label for="[platform].DS" class="form-check-label">DS</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Game Boy"
+        name="[platform][]" value="Game Boy"
+      >
+      <label for="[platform].Game Boy" class="form-check-label">Game Boy</label>
     </div>
   
     <div class="form-check form-check-inline">
@@ -1099,16 +1109,6 @@ type: seq
         name="[meta][subgenre][]" value="Bullet Hell"
       >
       <label for="[meta][subgenre].Bullet Hell" class="form-check-label">Bullet Hell</label>
-    </div>
-  
-    <div class="form-check form-check-inline">
-      <input
-        type="checkbox"
-        class="form-check-input"
-        id="[meta][subgenre].Card Game"
-        name="[meta][subgenre][]" value="Card Game"
-      >
-      <label for="[meta][subgenre].Card Game" class="form-check-label">Card Game</label>
     </div>
   
     <div class="form-check form-check-inline">
