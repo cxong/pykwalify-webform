@@ -164,10 +164,12 @@ schema;meta:
   type: map
 schema;platform:
   enum: &id005
+  - 3DS
   - Amiga
   - Amstrad CPC
   - Android
   - Apple II
+  - Apple TV
   - Arcade
   - Atari
   - Commodore 64
@@ -378,6 +380,16 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[platform].3DS"
+        name="[platform][]" value="3DS"
+      >
+      <label for="[platform].3DS" class="form-check-label">3DS</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[platform].Amiga"
         name="[platform][]" value="Amiga"
       >
@@ -412,6 +424,16 @@ type: seq
         name="[platform][]" value="Apple II"
       >
       <label for="[platform].Apple II" class="form-check-label">Apple II</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].Apple TV"
+        name="[platform][]" value="Apple TV"
+      >
+      <label for="[platform].Apple TV" class="form-check-label">Apple TV</label>
     </div>
   
     <div class="form-check form-check-inline">
