@@ -107,7 +107,7 @@ class Generator:
 @click.argument("target_schema", default="")
 def main(schema_file, out_path: str, target_schema: str):
     schemata = safe_load(schema_file)
-    generator = Generator(schemata, "templates")
+    generator = Generator(schemata, "../templates")
     makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w") as f:
         f.write(generator.generate(target_schema))
