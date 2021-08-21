@@ -71,9 +71,7 @@ class Renderer:
             # TODO: matching-rule
             # TODO: regex;(regex-pattern)/re;(regex-pattern)
             for mapping in schema["mapping"]:
-                self._render(
-                    sub_stream, schema["mapping"][mapping], names + [mapping]
-                )
+                self._render(sub_stream, schema["mapping"][mapping], names + [mapping])
         template = self._templates[schema_type]
         stream.write(
             template.render(
