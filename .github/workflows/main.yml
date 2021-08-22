@@ -15,7 +15,6 @@ jobs:
         sudo -H pip install -U pipenv
         pipenv install
         mkdir build
-        cp -r static build
 
     - name: Build (osgameclones.games)
       run: |
