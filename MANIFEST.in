@@ -1,2 +1,2 @@
-recursive-include static *
-recursive-include templates *.jinja2
+recursive-include pykwalify_webform/static *
+recursive-include pykwalify_webform/templates *.jinja2

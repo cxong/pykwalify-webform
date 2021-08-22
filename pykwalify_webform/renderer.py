@@ -1,6 +1,7 @@
 from io import StringIO
 from os import listdir, path
 from os.path import splitext
+from pathlib import Path
 from typing import TextIO, List
 
 from jinja2 import Environment, FileSystemLoader
@@ -16,14 +17,14 @@ class Renderer:
     PAGE_TEMPLATE_FILENAME = "page.jinja2"
     TEMPLATE_EXTENSION = ".jinja2"
 
-    def __init__(self, schemata: dict, templates_dir: str):
+    def __init__(self, schemata: dict, templates_dir: Path):
         self._schemata = schemata
 
         self._env = Environment(loader=FileSystemLoader(templates_dir))
 
         # Load type templates
         self._templates = {}
-        for filename in listdir(path.join(templates_dir, self.TYPE_TEMPLATE_DIR)):
+        for filename in listdir(templates_dir / self.TYPE_TEMPLATE_DIR):
             basename, extension = splitext(filename)
             if extension != self.TEMPLATE_EXTENSION:
                 continue
@@ -32,19 +33,17 @@ class Renderer:
             )
         self._page_template = self._load_template_file(self.PAGE_TEMPLATE_FILENAME)
 
-    def render(self, target_schema: str):
+    def render(self, target_schema: str, **kwargs):
         stream = StringIO()
         if target_schema:
-            name = target_schema
             schema = self._schemata[f"schema;{target_schema}"]
             target_schema = f"schema;{target_schema}"
         else:
-            name = ""
             schema = self._schemata["sequence"][0]
             target_schema = "sequence"
         self._render(stream, schema, [target_schema])
         return self._page_template.render(
-            name=name, contents=stream.getvalue(), schema=safe_dump(self._schemata)
+            **kwargs, contents=stream.getvalue(), schema=safe_dump(self._schemata)
         )
 
     def _render(self, stream: TextIO, schema: dict, names: List[str]):
