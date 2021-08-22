@@ -31,7 +31,7 @@ def main(ctx, schema_file, out_path: str, static_path: str, target_schema: str):
         f.write(renderer.render(target_schema, **kwargs))
 
     # Copy static files
-    shutil.copytree(HERE / "static", Path(static_path) / "static")
+    shutil.copytree(HERE / "static", Path(static_path) / "static", dirs_exist_ok=True)
 
 
 if __name__ == "__main__":
