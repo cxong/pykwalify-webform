@@ -11,7 +11,7 @@ twine = "*"
 jinja2 = "*"
 pykwalify = "*"
 click = "*"
-"ruamel.yaml" = "*"
+pyyaml = "*"
 
 [requires]
 python_version = "3.8"

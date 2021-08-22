@@ -4,7 +4,7 @@ from os import makedirs
 import click
 from yaml import safe_load
 
-from .renderer import Renderer
+from pykwalify_webform.renderer import Renderer
 
 
 @click.command()
