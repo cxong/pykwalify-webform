@@ -20,12 +20,12 @@ jobs:
     - name: Build (osgameclones.games)
       run: |
         wget https://raw.githubusercontent.com/opengaming/osgameclones/master/schema/games.yaml
-        pipenv run python -m pykwalify-webform games.yaml build/osgameclones/game.html
+        pipenv run python -m pykwalify_webform games.yaml build/osgameclones/game.html
 
     - name: Build (osgameclones.originals)
       run: |
         wget https://raw.githubusercontent.com/opengaming/osgameclones/master/schema/originals.yaml
-        pipenv run python -m pykwalify-webform originals.yaml build/osgameclones/original.html
+        pipenv run python -m pykwalify_webform originals.yaml build/osgameclones/original.html
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2.5.1
