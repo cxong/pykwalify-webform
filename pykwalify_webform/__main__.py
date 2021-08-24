@@ -31,7 +31,11 @@ def main(ctx, schema_file, out_path: str, static_path: str, target_schema: str):
         f.write(renderer.render(target_schema, **kwargs))
 
     # Copy static files
-    shutil.copytree(HERE / "static", Path(static_path) / "static", dirs_exist_ok=True)
+    try:
+        shutil.copytree(HERE / "static", static_path)
+    except FileExistsError:
+        # TODO: python 3.8+ has dir_exists_ok=True
+        pass
 
 
 if __name__ == "__main__":
