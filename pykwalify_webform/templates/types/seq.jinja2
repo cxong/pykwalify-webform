@@ -10,15 +10,16 @@ TODO: multiple sequences?
 {% if sequence and "enum" in sequence and sequence.get("unique", False) %}
   {# Need to use JS to validate required checkbox groups #}
   <div class="{{ "checkbox-group-required" if required else "" }}">
-  {% for value in sequence["enum"] %}
+  {% for s_value in sequence["enum"] %}
     <div class="form-check{{ " form-check-inline" if sequence["enum"]|length > MAX_CHECKBOXES else "" }}">
       <input
         type="checkbox"
         class="form-check-input"
-        id="{{ path }}.{{ value }}"
-        name="{{ path }}[]" value="{{ value }}"
+        id="{{ path }}.{{ s_value }}"
+        name="{{ path }}[]" value="{{ s_value }}"
+        {% if value and s_value in value %}checked{% endif %}
       >
-      <label for="{{ path }}.{{ value }}" class="form-check-label">{{ value }}</label>
+      <label for="{{ path }}.{{ s_value }}" class="form-check-label">{{ s_value }}</label>
     </div>
   {% endfor %}
   </div>
@@ -35,7 +36,8 @@ TODO: multiple sequences?
   {% else %}
     placeholder="Comma to add another"
   {% endif %}
-/>
+  {% if value %}value="{{ ",".join(value) }}"{% endif %}
+>
 {% endif %}
 
 {% endblock %}

@@ -2,7 +2,7 @@ from io import StringIO
 from os import listdir, path
 from os.path import splitext
 from pathlib import Path
-from typing import TextIO, List
+from typing import TextIO, List, Any, Optional, Mapping
 
 from jinja2 import Environment, FileSystemLoader
 from yaml import safe_dump
@@ -33,7 +33,7 @@ class Renderer:
             )
         self._page_template = self._load_template_file(self.PAGE_TEMPLATE_FILENAME)
 
-    def render(self, target_schema: str, **kwargs):
+    def render(self, target_schema: str, value: Optional[Mapping[str]], **kwargs):
         stream = StringIO()
         if target_schema:
             schema = self._schemata[f"schema;{target_schema}"]
@@ -41,12 +41,12 @@ class Renderer:
         else:
             schema = self._schemata["sequence"][0]
             target_schema = "sequence"
-        self._render(stream, schema, [target_schema])
+        self._render(stream, schema, [target_schema], value)
         return self._page_template.render(
             **kwargs, contents=stream.getvalue(), schema=safe_dump(self._schemata)
         )
 
-    def _render(self, stream: TextIO, schema: dict, names: List[str]):
+    def _render(self, stream: TextIO, schema: dict, names: List[str], value: Any):
         # TODO: pattern
         # TODO: range
         # TODO: example
@@ -70,7 +70,12 @@ class Renderer:
             # TODO: matching-rule
             # TODO: regex;(regex-pattern)/re;(regex-pattern)
             for mapping in schema["mapping"]:
-                self._render(sub_stream, schema["mapping"][mapping], names + [mapping])
+                self._render(
+                    sub_stream,
+                    schema["mapping"][mapping],
+                    names + [mapping],
+                    value.get(mapping) if value else None,
+                )
         template = self._templates[schema_type]
         stream.write(
             template.render(
@@ -79,6 +84,7 @@ class Renderer:
                 required=required,
                 contents=sub_stream.getvalue(),
                 schema=schema,
+                value=value,
             )
         )
 

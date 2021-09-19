@@ -8,16 +8,17 @@ https://pykwalify.readthedocs.io/en/unstable/validation-rules.html#range
 {% set MAX_RADIO_BUTTONS = 5 %}
 {% if schema.get("enum") %}
   {% if schema["enum"]|length <= MAX_RADIO_BUTTONS %}
-    {% for value in schema["enum"] %}
+    {% for s_value in schema["enum"] %}
       <div class="form-check">
         <input
           type="radio"
           class="form-check-input"
-          id="{{ path }}.{{ value }}"
-          name="{{ path }}" value="{{ value }}"
+          id="{{ path }}.{{ s_value }}"
+          name="{{ path }}" value="{{ s_value }}"
           {{ "required" if required else "" }}
+          {% if s_value == value %}checked{% endif %}
         >
-        <label for="{{ path }}.{{ value }}" class="form-check-label">{{ value }}</label>
+        <label for="{{ path }}.{{ s_value }}" class="form-check-label">{{ s_value }}</label>
       </div>
     {% endfor %}
   {% else %}
@@ -27,8 +28,13 @@ https://pykwalify.readthedocs.io/en/unstable/validation-rules.html#range
       class="form-control"
       {{ "required" if required else "" }}
     >
-    {% for value in schema["enum"] %}
-      <option value="{{ value }}">{{ value }}</option>
+    {% for s_value in schema["enum"] %}
+      <option
+        value="{{ s_value }}"
+        {% if s_value == value %}selected{% endif %}
+       >
+        {{ s_value }}
+       </option>
     {% endfor %}
     </select>
   {% endif %}
@@ -50,6 +56,7 @@ https://pykwalify.readthedocs.io/en/unstable/validation-rules.html#range
     {% if "desc" in schema %}
       placeholder="{{ schema["desc"]|e }}"
     {% endif %}
+    {% if value %}value="{{ value }}"{% endif %}
   >
 {% endif %}
 

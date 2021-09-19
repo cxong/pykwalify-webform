@@ -9,5 +9,6 @@
   {% if "desc" in schema %}
     placeholder="{{ schema["desc"]|e }}"
   {% endif %}
+  {% if value %}value="{{ value }}"{% endif %}
 >
 {% endblock %}

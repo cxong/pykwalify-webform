@@ -21,14 +21,20 @@ HERE = Path(__file__).parent
 @click.argument("out_path", type=click.Path(dir_okay=False, writable=True))
 @click.argument("static_path", type=click.Path(dir_okay=True, writable=True))
 @click.argument("target_schema", default="")
+@click.option("--value-file", type=click.File("r"))
 @click.pass_context
-def main(ctx, schema_file, out_path: str, static_path: str, target_schema: str):
+def main(
+    ctx, schema_file, out_path: str, static_path: str, target_schema: str, value_file
+):
     kwargs = {kv.split("=")[0].lstrip("--"): kv.split("=")[1] for kv in ctx.args}
     schemata = safe_load(schema_file)
+    value = None
+    if value_file:
+        value = safe_load(value_file)
     renderer = Renderer(schemata, HERE / "templates")
     makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w") as f:
-        f.write(renderer.render(target_schema, **kwargs))
+        f.write(renderer.render(target_schema, value, **kwargs))
 
     # Copy static files
     copy_tree(str(HERE / "static"), static_path)
