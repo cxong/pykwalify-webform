@@ -1,7 +1,7 @@
 # pykwalify-webform
 [![PyPI](https://img.shields.io/pypi/v/pykwalify-webform)](https://pypi.org/project/pykwalify-webform/)
 [![Actions Status](https://github.com/cxong/pykwalify-webform/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/cxong/pykwalify-webform/actions)
-![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/cxong/pykwalify-webform)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pykwalify-webform)
 
 Generate webforms based on YAML schema with pykwalify
 
