@@ -33,7 +33,7 @@ class Renderer:
             )
         self._page_template = self._load_template_file(self.PAGE_TEMPLATE_FILENAME)
 
-    def render(self, target_schema: str, value: Optional[Mapping[str]], **kwargs):
+    def render(self, target_schema: str, value: Optional[Mapping[str, Any]], **kwargs):
         stream = StringIO()
         if target_schema:
             schema = self._schemata[f"schema;{target_schema}"]
