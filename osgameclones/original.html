@@ -195,6 +195,7 @@ schema;platform:
   - PlayStation 4
   - PlayStation Vita
   - Saturn
+  - SNES
   - Web
   - Windows
   - Xbox
@@ -213,8 +214,10 @@ sequence:
     external:
       mapping:
         website:
+          desc: URL of official website
           type: str
         wikipedia:
+          desc: Title of Wikipedia article
           type: str
       required: true
       type: map
@@ -226,6 +229,7 @@ sequence:
       required: true
       type: str
     names:
+      desc: Alternate names for this game
       sequence:
       - type: str
       type: seq
@@ -302,7 +306,7 @@ type: seq
   class="form-control tagsinput"
   
   
-    placeholder="Comma to add another"
+    placeholder="Alternate names for this game - comma to add another"
   
   
 >
@@ -333,6 +337,8 @@ type: seq
     
     
     
+      placeholder="URL of official website"
+    
     
   >
 
@@ -358,6 +364,8 @@ type: seq
     name="[external][wikipedia]"
     
     
+    
+      placeholder="Title of Wikipedia article"
     
     
   >
@@ -723,6 +731,17 @@ type: seq
         
       >
       <label for="[platform].Saturn" class="form-check-label">Saturn</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].SNES"
+        name="[platform][]" value="SNES"
+        
+      >
+      <label for="[platform].SNES" class="form-check-label">SNES</label>
     </div>
   
     <div class="form-check form-check-inline">

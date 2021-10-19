@@ -35,6 +35,15 @@
             schema;game:
   mapping: &id002
     content:
+      desc: 'Commercial: requires data from original game, which is not free<br>
+
+        Free: game data is free or can be obtained for free<br>
+
+        Open: game data has an open source license<br>
+
+        Swappable: game data is commercial but can be swapped with open source replacements
+
+        '
       enum:
       - commercial
       - free
@@ -42,6 +51,17 @@
       - swappable
       type: str
     development:
+      desc: 'Complete: development stopped but game is complete<br>
+
+        Very active: many commits within the past week<br>
+
+        Active: commits within the past month<br>
+
+        Sporadic: commits within the past year<br>
+
+        Halted: no commits within the past year
+
+        '
       enum:
       - complete
       - very active
@@ -147,6 +167,13 @@
       required: false
       type: str
     status:
+      desc: 'Playable: all major features working, full game can be completed<br>
+
+        Semi-playable: game runs and some parts of the game playable<br>
+
+        Unplayable: game cannot be played, e.g. can only load assets
+
+        '
       enum:
       - playable
       - semi-playable
@@ -446,7 +473,12 @@ type: seq
   
     
       <div class="form-check"
-        
+        data-toggle="tooltip" data-placement="left" data-html="true" title="Complete: development stopped but game is complete&lt;br&gt;
+Very active: many commits within the past week&lt;br&gt;
+Active: commits within the past month&lt;br&gt;
+Sporadic: commits within the past year&lt;br&gt;
+Halted: no commits within the past year
+"
       >
         <input
           type="radio"
@@ -460,7 +492,12 @@ type: seq
       </div>
     
       <div class="form-check"
-        
+        data-toggle="tooltip" data-placement="left" data-html="true" title="Complete: development stopped but game is complete&lt;br&gt;
+Very active: many commits within the past week&lt;br&gt;
+Active: commits within the past month&lt;br&gt;
+Sporadic: commits within the past year&lt;br&gt;
+Halted: no commits within the past year
+"
       >
         <input
           type="radio"
@@ -474,7 +511,12 @@ type: seq
       </div>
     
       <div class="form-check"
-        
+        data-toggle="tooltip" data-placement="left" data-html="true" title="Complete: development stopped but game is complete&lt;br&gt;
+Very active: many commits within the past week&lt;br&gt;
+Active: commits within the past month&lt;br&gt;
+Sporadic: commits within the past year&lt;br&gt;
+Halted: no commits within the past year
+"
       >
         <input
           type="radio"
@@ -488,7 +530,12 @@ type: seq
       </div>
     
       <div class="form-check"
-        
+        data-toggle="tooltip" data-placement="left" data-html="true" title="Complete: development stopped but game is complete&lt;br&gt;
+Very active: many commits within the past week&lt;br&gt;
+Active: commits within the past month&lt;br&gt;
+Sporadic: commits within the past year&lt;br&gt;
+Halted: no commits within the past year
+"
       >
         <input
           type="radio"
@@ -502,7 +549,12 @@ type: seq
       </div>
     
       <div class="form-check"
-        
+        data-toggle="tooltip" data-placement="left" data-html="true" title="Complete: development stopped but game is complete&lt;br&gt;
+Very active: many commits within the past week&lt;br&gt;
+Active: commits within the past month&lt;br&gt;
+Sporadic: commits within the past year&lt;br&gt;
+Halted: no commits within the past year
+"
       >
         <input
           type="radio"
@@ -535,7 +587,10 @@ type: seq
   
     
       <div class="form-check"
-        
+        data-toggle="tooltip" data-placement="left" data-html="true" title="Playable: all major features working, full game can be completed&lt;br&gt;
+Semi-playable: game runs and some parts of the game playable&lt;br&gt;
+Unplayable: game cannot be played, e.g. can only load assets
+"
       >
         <input
           type="radio"
@@ -549,7 +604,10 @@ type: seq
       </div>
     
       <div class="form-check"
-        
+        data-toggle="tooltip" data-placement="left" data-html="true" title="Playable: all major features working, full game can be completed&lt;br&gt;
+Semi-playable: game runs and some parts of the game playable&lt;br&gt;
+Unplayable: game cannot be played, e.g. can only load assets
+"
       >
         <input
           type="radio"
@@ -563,7 +621,10 @@ type: seq
       </div>
     
       <div class="form-check"
-        
+        data-toggle="tooltip" data-placement="left" data-html="true" title="Playable: all major features working, full game can be completed&lt;br&gt;
+Semi-playable: game runs and some parts of the game playable&lt;br&gt;
+Unplayable: game cannot be played, e.g. can only load assets
+"
       >
         <input
           type="radio"
@@ -706,7 +767,11 @@ type: seq
   
     
       <div class="form-check"
-        
+        data-toggle="tooltip" data-placement="left" data-html="true" title="Commercial: requires data from original game, which is not free&lt;br&gt;
+Free: game data is free or can be obtained for free&lt;br&gt;
+Open: game data has an open source license&lt;br&gt;
+Swappable: game data is commercial but can be swapped with open source replacements
+"
       >
         <input
           type="radio"
@@ -720,7 +785,11 @@ type: seq
       </div>
     
       <div class="form-check"
-        
+        data-toggle="tooltip" data-placement="left" data-html="true" title="Commercial: requires data from original game, which is not free&lt;br&gt;
+Free: game data is free or can be obtained for free&lt;br&gt;
+Open: game data has an open source license&lt;br&gt;
+Swappable: game data is commercial but can be swapped with open source replacements
+"
       >
         <input
           type="radio"
@@ -734,7 +803,11 @@ type: seq
       </div>
     
       <div class="form-check"
-        
+        data-toggle="tooltip" data-placement="left" data-html="true" title="Commercial: requires data from original game, which is not free&lt;br&gt;
+Free: game data is free or can be obtained for free&lt;br&gt;
+Open: game data has an open source license&lt;br&gt;
+Swappable: game data is commercial but can be swapped with open source replacements
+"
       >
         <input
           type="radio"
@@ -748,7 +821,11 @@ type: seq
       </div>
     
       <div class="form-check"
-        
+        data-toggle="tooltip" data-placement="left" data-html="true" title="Commercial: requires data from original game, which is not free&lt;br&gt;
+Free: game data is free or can be obtained for free&lt;br&gt;
+Open: game data has an open source license&lt;br&gt;
+Swappable: game data is commercial but can be swapped with open source replacements
+"
       >
         <input
           type="radio"
