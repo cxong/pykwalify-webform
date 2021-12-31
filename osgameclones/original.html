@@ -179,6 +179,7 @@ schema;platform:
   - DS
   - Game Boy
   - GameCube
+  - GBA
   - Genesis
   - iOS
   - Linux
@@ -194,6 +195,7 @@ schema;platform:
   - PlayStation 3
   - PlayStation 4
   - PlayStation Vita
+  - PSP
   - Saturn
   - SNES
   - Web
@@ -561,6 +563,17 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[platform].GBA"
+        name="[platform][]" value="GBA"
+        
+      >
+      <label for="[platform].GBA" class="form-check-label">GBA</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[platform].Genesis"
         name="[platform][]" value="Genesis"
         
@@ -720,6 +733,17 @@ type: seq
         
       >
       <label for="[platform].PlayStation Vita" class="form-check-label">PlayStation Vita</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platform].PSP"
+        name="[platform][]" value="PSP"
+        
+      >
+      <label for="[platform].PSP" class="form-check-label">PSP</label>
     </div>
   
     <div class="form-check form-check-inline">
