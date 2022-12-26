@@ -37,7 +37,6 @@
   - Action
   - Adventure
   - Arcade
-  - Artillery
   - Card Game
   - Compilation
   - Educational
@@ -66,18 +65,19 @@
   type: str
 schema;meta:
   mapping: &id004
-    genre:
+    genres:
       sequence:
       - enum: *id001
         include: genres
         type: str
         unique: true
       type: seq
-    subgenre:
+    subgenres:
       sequence:
       - enum: &id002
         - 4X
         - Action RPG
+        - Artillery
         - Baseball
         - Basketball
         - Billiards
@@ -116,13 +116,14 @@ schema;meta:
         - Track & Field
         - Train Simulator
         - Vehicular Combat
+        - Visual Novel
         - Volleyball
         - Wrestling
         include: subgenres
         type: str
         unique: true
       type: seq
-    theme:
+    themes:
       sequence:
       - enum: &id003
         - Abstract
@@ -162,7 +163,7 @@ schema;meta:
         unique: true
       type: seq
   type: map
-schema;platform:
+schema;platforms:
   enum: &id005
   - 3DS
   - Amiga
@@ -184,7 +185,9 @@ schema;platform:
   - iOS
   - Linux
   - Lynx
+  - Master System
   - Mobile
+  - MSX
   - NES
   - N64
   - Nintendo Switch
@@ -199,6 +202,7 @@ schema;platform:
   - Saturn
   - SNES
   - Web
+  - Wii
   - Windows
   - Xbox
   - Xbox 360
@@ -235,10 +239,10 @@ sequence:
       sequence:
       - type: str
       type: seq
-    platform:
+    platforms:
       sequence:
       - enum: *id005
-        include: platform
+        include: platforms
         type: str
         unique: true
       type: seq
@@ -381,8 +385,8 @@ type: seq
 </div>
 <div class="form-group row">
   
-    <label for="[platform]" class="col-sm-2 col-form-label">
-      Platform
+    <label for="[platforms]" class="col-sm-2 col-form-label">
+      Platforms
     </label>
     <div class="col-sm-10">
       
@@ -398,440 +402,473 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].3DS"
-        name="[platform][]" value="3DS"
+        id="[platforms].3DS"
+        name="[platforms][]" value="3DS"
         
       >
-      <label for="[platform].3DS" class="form-check-label">3DS</label>
+      <label for="[platforms].3DS" class="form-check-label">3DS</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Amiga"
-        name="[platform][]" value="Amiga"
+        id="[platforms].Amiga"
+        name="[platforms][]" value="Amiga"
         
       >
-      <label for="[platform].Amiga" class="form-check-label">Amiga</label>
+      <label for="[platforms].Amiga" class="form-check-label">Amiga</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Amstrad CPC"
-        name="[platform][]" value="Amstrad CPC"
+        id="[platforms].Amstrad CPC"
+        name="[platforms][]" value="Amstrad CPC"
         
       >
-      <label for="[platform].Amstrad CPC" class="form-check-label">Amstrad CPC</label>
+      <label for="[platforms].Amstrad CPC" class="form-check-label">Amstrad CPC</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Android"
-        name="[platform][]" value="Android"
+        id="[platforms].Android"
+        name="[platforms][]" value="Android"
         
       >
-      <label for="[platform].Android" class="form-check-label">Android</label>
+      <label for="[platforms].Android" class="form-check-label">Android</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Apple II"
-        name="[platform][]" value="Apple II"
+        id="[platforms].Apple II"
+        name="[platforms][]" value="Apple II"
         
       >
-      <label for="[platform].Apple II" class="form-check-label">Apple II</label>
+      <label for="[platforms].Apple II" class="form-check-label">Apple II</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Apple TV"
-        name="[platform][]" value="Apple TV"
+        id="[platforms].Apple TV"
+        name="[platforms][]" value="Apple TV"
         
       >
-      <label for="[platform].Apple TV" class="form-check-label">Apple TV</label>
+      <label for="[platforms].Apple TV" class="form-check-label">Apple TV</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Arcade"
-        name="[platform][]" value="Arcade"
+        id="[platforms].Arcade"
+        name="[platforms][]" value="Arcade"
         
       >
-      <label for="[platform].Arcade" class="form-check-label">Arcade</label>
+      <label for="[platforms].Arcade" class="form-check-label">Arcade</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Atari"
-        name="[platform][]" value="Atari"
+        id="[platforms].Atari"
+        name="[platforms][]" value="Atari"
         
       >
-      <label for="[platform].Atari" class="form-check-label">Atari</label>
+      <label for="[platforms].Atari" class="form-check-label">Atari</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Classic Mac OS"
-        name="[platform][]" value="Classic Mac OS"
+        id="[platforms].Classic Mac OS"
+        name="[platforms][]" value="Classic Mac OS"
         
       >
-      <label for="[platform].Classic Mac OS" class="form-check-label">Classic Mac OS</label>
+      <label for="[platforms].Classic Mac OS" class="form-check-label">Classic Mac OS</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Commodore 64"
-        name="[platform][]" value="Commodore 64"
+        id="[platforms].Commodore 64"
+        name="[platforms][]" value="Commodore 64"
         
       >
-      <label for="[platform].Commodore 64" class="form-check-label">Commodore 64</label>
+      <label for="[platforms].Commodore 64" class="form-check-label">Commodore 64</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].DOS"
-        name="[platform][]" value="DOS"
+        id="[platforms].DOS"
+        name="[platforms][]" value="DOS"
         
       >
-      <label for="[platform].DOS" class="form-check-label">DOS</label>
+      <label for="[platforms].DOS" class="form-check-label">DOS</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Dreamcast"
-        name="[platform][]" value="Dreamcast"
+        id="[platforms].Dreamcast"
+        name="[platforms][]" value="Dreamcast"
         
       >
-      <label for="[platform].Dreamcast" class="form-check-label">Dreamcast</label>
+      <label for="[platforms].Dreamcast" class="form-check-label">Dreamcast</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].DS"
-        name="[platform][]" value="DS"
+        id="[platforms].DS"
+        name="[platforms][]" value="DS"
         
       >
-      <label for="[platform].DS" class="form-check-label">DS</label>
+      <label for="[platforms].DS" class="form-check-label">DS</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Game Boy"
-        name="[platform][]" value="Game Boy"
+        id="[platforms].Game Boy"
+        name="[platforms][]" value="Game Boy"
         
       >
-      <label for="[platform].Game Boy" class="form-check-label">Game Boy</label>
+      <label for="[platforms].Game Boy" class="form-check-label">Game Boy</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].GameCube"
-        name="[platform][]" value="GameCube"
+        id="[platforms].GameCube"
+        name="[platforms][]" value="GameCube"
         
       >
-      <label for="[platform].GameCube" class="form-check-label">GameCube</label>
+      <label for="[platforms].GameCube" class="form-check-label">GameCube</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].GBA"
-        name="[platform][]" value="GBA"
+        id="[platforms].GBA"
+        name="[platforms][]" value="GBA"
         
       >
-      <label for="[platform].GBA" class="form-check-label">GBA</label>
+      <label for="[platforms].GBA" class="form-check-label">GBA</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Genesis"
-        name="[platform][]" value="Genesis"
+        id="[platforms].Genesis"
+        name="[platforms][]" value="Genesis"
         
       >
-      <label for="[platform].Genesis" class="form-check-label">Genesis</label>
+      <label for="[platforms].Genesis" class="form-check-label">Genesis</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].iOS"
-        name="[platform][]" value="iOS"
+        id="[platforms].iOS"
+        name="[platforms][]" value="iOS"
         
       >
-      <label for="[platform].iOS" class="form-check-label">iOS</label>
+      <label for="[platforms].iOS" class="form-check-label">iOS</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Linux"
-        name="[platform][]" value="Linux"
+        id="[platforms].Linux"
+        name="[platforms][]" value="Linux"
         
       >
-      <label for="[platform].Linux" class="form-check-label">Linux</label>
+      <label for="[platforms].Linux" class="form-check-label">Linux</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Lynx"
-        name="[platform][]" value="Lynx"
+        id="[platforms].Lynx"
+        name="[platforms][]" value="Lynx"
         
       >
-      <label for="[platform].Lynx" class="form-check-label">Lynx</label>
+      <label for="[platforms].Lynx" class="form-check-label">Lynx</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Mobile"
-        name="[platform][]" value="Mobile"
+        id="[platforms].Master System"
+        name="[platforms][]" value="Master System"
         
       >
-      <label for="[platform].Mobile" class="form-check-label">Mobile</label>
+      <label for="[platforms].Master System" class="form-check-label">Master System</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].NES"
-        name="[platform][]" value="NES"
+        id="[platforms].Mobile"
+        name="[platforms][]" value="Mobile"
         
       >
-      <label for="[platform].NES" class="form-check-label">NES</label>
+      <label for="[platforms].Mobile" class="form-check-label">Mobile</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].N64"
-        name="[platform][]" value="N64"
+        id="[platforms].MSX"
+        name="[platforms][]" value="MSX"
         
       >
-      <label for="[platform].N64" class="form-check-label">N64</label>
+      <label for="[platforms].MSX" class="form-check-label">MSX</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Nintendo Switch"
-        name="[platform][]" value="Nintendo Switch"
+        id="[platforms].NES"
+        name="[platforms][]" value="NES"
         
       >
-      <label for="[platform].Nintendo Switch" class="form-check-label">Nintendo Switch</label>
+      <label for="[platforms].NES" class="form-check-label">NES</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].OSX"
-        name="[platform][]" value="OSX"
+        id="[platforms].N64"
+        name="[platforms][]" value="N64"
         
       >
-      <label for="[platform].OSX" class="form-check-label">OSX</label>
+      <label for="[platforms].N64" class="form-check-label">N64</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].PC-98"
-        name="[platform][]" value="PC-98"
+        id="[platforms].Nintendo Switch"
+        name="[platforms][]" value="Nintendo Switch"
         
       >
-      <label for="[platform].PC-98" class="form-check-label">PC-98</label>
+      <label for="[platforms].Nintendo Switch" class="form-check-label">Nintendo Switch</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].PlayStation"
-        name="[platform][]" value="PlayStation"
+        id="[platforms].OSX"
+        name="[platforms][]" value="OSX"
         
       >
-      <label for="[platform].PlayStation" class="form-check-label">PlayStation</label>
+      <label for="[platforms].OSX" class="form-check-label">OSX</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].PlayStation 2"
-        name="[platform][]" value="PlayStation 2"
+        id="[platforms].PC-98"
+        name="[platforms][]" value="PC-98"
         
       >
-      <label for="[platform].PlayStation 2" class="form-check-label">PlayStation 2</label>
+      <label for="[platforms].PC-98" class="form-check-label">PC-98</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].PlayStation 3"
-        name="[platform][]" value="PlayStation 3"
+        id="[platforms].PlayStation"
+        name="[platforms][]" value="PlayStation"
         
       >
-      <label for="[platform].PlayStation 3" class="form-check-label">PlayStation 3</label>
+      <label for="[platforms].PlayStation" class="form-check-label">PlayStation</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].PlayStation 4"
-        name="[platform][]" value="PlayStation 4"
+        id="[platforms].PlayStation 2"
+        name="[platforms][]" value="PlayStation 2"
         
       >
-      <label for="[platform].PlayStation 4" class="form-check-label">PlayStation 4</label>
+      <label for="[platforms].PlayStation 2" class="form-check-label">PlayStation 2</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].PlayStation Vita"
-        name="[platform][]" value="PlayStation Vita"
+        id="[platforms].PlayStation 3"
+        name="[platforms][]" value="PlayStation 3"
         
       >
-      <label for="[platform].PlayStation Vita" class="form-check-label">PlayStation Vita</label>
+      <label for="[platforms].PlayStation 3" class="form-check-label">PlayStation 3</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].PSP"
-        name="[platform][]" value="PSP"
+        id="[platforms].PlayStation 4"
+        name="[platforms][]" value="PlayStation 4"
         
       >
-      <label for="[platform].PSP" class="form-check-label">PSP</label>
+      <label for="[platforms].PlayStation 4" class="form-check-label">PlayStation 4</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Saturn"
-        name="[platform][]" value="Saturn"
+        id="[platforms].PlayStation Vita"
+        name="[platforms][]" value="PlayStation Vita"
         
       >
-      <label for="[platform].Saturn" class="form-check-label">Saturn</label>
+      <label for="[platforms].PlayStation Vita" class="form-check-label">PlayStation Vita</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].SNES"
-        name="[platform][]" value="SNES"
+        id="[platforms].PSP"
+        name="[platforms][]" value="PSP"
         
       >
-      <label for="[platform].SNES" class="form-check-label">SNES</label>
+      <label for="[platforms].PSP" class="form-check-label">PSP</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Web"
-        name="[platform][]" value="Web"
+        id="[platforms].Saturn"
+        name="[platforms][]" value="Saturn"
         
       >
-      <label for="[platform].Web" class="form-check-label">Web</label>
+      <label for="[platforms].Saturn" class="form-check-label">Saturn</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Windows"
-        name="[platform][]" value="Windows"
+        id="[platforms].SNES"
+        name="[platforms][]" value="SNES"
         
       >
-      <label for="[platform].Windows" class="form-check-label">Windows</label>
+      <label for="[platforms].SNES" class="form-check-label">SNES</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Xbox"
-        name="[platform][]" value="Xbox"
+        id="[platforms].Web"
+        name="[platforms][]" value="Web"
         
       >
-      <label for="[platform].Xbox" class="form-check-label">Xbox</label>
+      <label for="[platforms].Web" class="form-check-label">Web</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Xbox 360"
-        name="[platform][]" value="Xbox 360"
+        id="[platforms].Wii"
+        name="[platforms][]" value="Wii"
         
       >
-      <label for="[platform].Xbox 360" class="form-check-label">Xbox 360</label>
+      <label for="[platforms].Wii" class="form-check-label">Wii</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].Xbox One"
-        name="[platform][]" value="Xbox One"
+        id="[platforms].Windows"
+        name="[platforms][]" value="Windows"
         
       >
-      <label for="[platform].Xbox One" class="form-check-label">Xbox One</label>
+      <label for="[platforms].Windows" class="form-check-label">Windows</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[platform].ZX Spectrum"
-        name="[platform][]" value="ZX Spectrum"
+        id="[platforms].Xbox"
+        name="[platforms][]" value="Xbox"
         
       >
-      <label for="[platform].ZX Spectrum" class="form-check-label">ZX Spectrum</label>
+      <label for="[platforms].Xbox" class="form-check-label">Xbox</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platforms].Xbox 360"
+        name="[platforms][]" value="Xbox 360"
+        
+      >
+      <label for="[platforms].Xbox 360" class="form-check-label">Xbox 360</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platforms].Xbox One"
+        name="[platforms][]" value="Xbox One"
+        
+      >
+      <label for="[platforms].Xbox One" class="form-check-label">Xbox One</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platforms].ZX Spectrum"
+        name="[platforms][]" value="ZX Spectrum"
+        
+      >
+      <label for="[platforms].ZX Spectrum" class="form-check-label">ZX Spectrum</label>
     </div>
   
   </div>
@@ -846,8 +883,8 @@ type: seq
     
 <div class="form-group row">
   
-    <label for="[meta][genre]" class="col-sm-2 col-form-label">
-      Genre
+    <label for="[meta][genres]" class="col-sm-2 col-form-label">
+      Genres
     </label>
     <div class="col-sm-10">
       
@@ -863,319 +900,308 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Action"
-        name="[meta][genre][]" value="Action"
+        id="[meta][genres].Action"
+        name="[meta][genres][]" value="Action"
         
       >
-      <label for="[meta][genre].Action" class="form-check-label">Action</label>
+      <label for="[meta][genres].Action" class="form-check-label">Action</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Adventure"
-        name="[meta][genre][]" value="Adventure"
+        id="[meta][genres].Adventure"
+        name="[meta][genres][]" value="Adventure"
         
       >
-      <label for="[meta][genre].Adventure" class="form-check-label">Adventure</label>
+      <label for="[meta][genres].Adventure" class="form-check-label">Adventure</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Arcade"
-        name="[meta][genre][]" value="Arcade"
+        id="[meta][genres].Arcade"
+        name="[meta][genres][]" value="Arcade"
         
       >
-      <label for="[meta][genre].Arcade" class="form-check-label">Arcade</label>
+      <label for="[meta][genres].Arcade" class="form-check-label">Arcade</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Artillery"
-        name="[meta][genre][]" value="Artillery"
+        id="[meta][genres].Card Game"
+        name="[meta][genres][]" value="Card Game"
         
       >
-      <label for="[meta][genre].Artillery" class="form-check-label">Artillery</label>
+      <label for="[meta][genres].Card Game" class="form-check-label">Card Game</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Card Game"
-        name="[meta][genre][]" value="Card Game"
+        id="[meta][genres].Compilation"
+        name="[meta][genres][]" value="Compilation"
         
       >
-      <label for="[meta][genre].Card Game" class="form-check-label">Card Game</label>
+      <label for="[meta][genres].Compilation" class="form-check-label">Compilation</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Compilation"
-        name="[meta][genre][]" value="Compilation"
+        id="[meta][genres].Educational"
+        name="[meta][genres][]" value="Educational"
         
       >
-      <label for="[meta][genre].Compilation" class="form-check-label">Compilation</label>
+      <label for="[meta][genres].Educational" class="form-check-label">Educational</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Educational"
-        name="[meta][genre][]" value="Educational"
+        id="[meta][genres].Fighting"
+        name="[meta][genres][]" value="Fighting"
         
       >
-      <label for="[meta][genre].Educational" class="form-check-label">Educational</label>
+      <label for="[meta][genres].Fighting" class="form-check-label">Fighting</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Fighting"
-        name="[meta][genre][]" value="Fighting"
+        id="[meta][genres].Flight"
+        name="[meta][genres][]" value="Flight"
         
       >
-      <label for="[meta][genre].Fighting" class="form-check-label">Fighting</label>
+      <label for="[meta][genres].Flight" class="form-check-label">Flight</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Flight"
-        name="[meta][genre][]" value="Flight"
+        id="[meta][genres].FPS"
+        name="[meta][genres][]" value="FPS"
         
       >
-      <label for="[meta][genre].Flight" class="form-check-label">Flight</label>
+      <label for="[meta][genres].FPS" class="form-check-label">FPS</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].FPS"
-        name="[meta][genre][]" value="FPS"
+        id="[meta][genres].MMORPG"
+        name="[meta][genres][]" value="MMORPG"
         
       >
-      <label for="[meta][genre].FPS" class="form-check-label">FPS</label>
+      <label for="[meta][genres].MMORPG" class="form-check-label">MMORPG</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].MMORPG"
-        name="[meta][genre][]" value="MMORPG"
+        id="[meta][genres].MOBA"
+        name="[meta][genres][]" value="MOBA"
         
       >
-      <label for="[meta][genre].MMORPG" class="form-check-label">MMORPG</label>
+      <label for="[meta][genres].MOBA" class="form-check-label">MOBA</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].MOBA"
-        name="[meta][genre][]" value="MOBA"
+        id="[meta][genres].Party"
+        name="[meta][genres][]" value="Party"
         
       >
-      <label for="[meta][genre].MOBA" class="form-check-label">MOBA</label>
+      <label for="[meta][genres].Party" class="form-check-label">Party</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Party"
-        name="[meta][genre][]" value="Party"
+        id="[meta][genres].Platform"
+        name="[meta][genres][]" value="Platform"
         
       >
-      <label for="[meta][genre].Party" class="form-check-label">Party</label>
+      <label for="[meta][genres].Platform" class="form-check-label">Platform</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Platform"
-        name="[meta][genre][]" value="Platform"
+        id="[meta][genres].Puzzle"
+        name="[meta][genres][]" value="Puzzle"
         
       >
-      <label for="[meta][genre].Platform" class="form-check-label">Platform</label>
+      <label for="[meta][genres].Puzzle" class="form-check-label">Puzzle</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Puzzle"
-        name="[meta][genre][]" value="Puzzle"
+        id="[meta][genres].Racing"
+        name="[meta][genres][]" value="Racing"
         
       >
-      <label for="[meta][genre].Puzzle" class="form-check-label">Puzzle</label>
+      <label for="[meta][genres].Racing" class="form-check-label">Racing</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Racing"
-        name="[meta][genre][]" value="Racing"
+        id="[meta][genres].RPG"
+        name="[meta][genres][]" value="RPG"
         
       >
-      <label for="[meta][genre].Racing" class="form-check-label">Racing</label>
+      <label for="[meta][genres].RPG" class="form-check-label">RPG</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].RPG"
-        name="[meta][genre][]" value="RPG"
+        id="[meta][genres].Real-Time Strategy"
+        name="[meta][genres][]" value="Real-Time Strategy"
         
       >
-      <label for="[meta][genre].RPG" class="form-check-label">RPG</label>
+      <label for="[meta][genres].Real-Time Strategy" class="form-check-label">Real-Time Strategy</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Real-Time Strategy"
-        name="[meta][genre][]" value="Real-Time Strategy"
+        id="[meta][genres].Real-Time Tactics"
+        name="[meta][genres][]" value="Real-Time Tactics"
         
       >
-      <label for="[meta][genre].Real-Time Strategy" class="form-check-label">Real-Time Strategy</label>
+      <label for="[meta][genres].Real-Time Tactics" class="form-check-label">Real-Time Tactics</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Real-Time Tactics"
-        name="[meta][genre][]" value="Real-Time Tactics"
+        id="[meta][genres].Sports"
+        name="[meta][genres][]" value="Sports"
         
       >
-      <label for="[meta][genre].Real-Time Tactics" class="form-check-label">Real-Time Tactics</label>
+      <label for="[meta][genres].Sports" class="form-check-label">Sports</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Sports"
-        name="[meta][genre][]" value="Sports"
+        id="[meta][genres].Turn-Based Strategy"
+        name="[meta][genres][]" value="Turn-Based Strategy"
         
       >
-      <label for="[meta][genre].Sports" class="form-check-label">Sports</label>
+      <label for="[meta][genres].Turn-Based Strategy" class="form-check-label">Turn-Based Strategy</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Turn-Based Strategy"
-        name="[meta][genre][]" value="Turn-Based Strategy"
+        id="[meta][genres].Turn-Based Tactics"
+        name="[meta][genres][]" value="Turn-Based Tactics"
         
       >
-      <label for="[meta][genre].Turn-Based Strategy" class="form-check-label">Turn-Based Strategy</label>
+      <label for="[meta][genres].Turn-Based Tactics" class="form-check-label">Turn-Based Tactics</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Turn-Based Tactics"
-        name="[meta][genre][]" value="Turn-Based Tactics"
+        id="[meta][genres].TPS"
+        name="[meta][genres][]" value="TPS"
         
       >
-      <label for="[meta][genre].Turn-Based Tactics" class="form-check-label">Turn-Based Tactics</label>
+      <label for="[meta][genres].TPS" class="form-check-label">TPS</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].TPS"
-        name="[meta][genre][]" value="TPS"
+        id="[meta][genres].Rhythm"
+        name="[meta][genres][]" value="Rhythm"
         
       >
-      <label for="[meta][genre].TPS" class="form-check-label">TPS</label>
+      <label for="[meta][genres].Rhythm" class="form-check-label">Rhythm</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Rhythm"
-        name="[meta][genre][]" value="Rhythm"
+        id="[meta][genres].Roguelike"
+        name="[meta][genres][]" value="Roguelike"
         
       >
-      <label for="[meta][genre].Rhythm" class="form-check-label">Rhythm</label>
+      <label for="[meta][genres].Roguelike" class="form-check-label">Roguelike</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Roguelike"
-        name="[meta][genre][]" value="Roguelike"
+        id="[meta][genres].Shooter"
+        name="[meta][genres][]" value="Shooter"
         
       >
-      <label for="[meta][genre].Roguelike" class="form-check-label">Roguelike</label>
+      <label for="[meta][genres].Shooter" class="form-check-label">Shooter</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Shooter"
-        name="[meta][genre][]" value="Shooter"
+        id="[meta][genres].Shmup"
+        name="[meta][genres][]" value="Shmup"
         
       >
-      <label for="[meta][genre].Shooter" class="form-check-label">Shooter</label>
+      <label for="[meta][genres].Shmup" class="form-check-label">Shmup</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Shmup"
-        name="[meta][genre][]" value="Shmup"
+        id="[meta][genres].Simulation"
+        name="[meta][genres][]" value="Simulation"
         
       >
-      <label for="[meta][genre].Shmup" class="form-check-label">Shmup</label>
+      <label for="[meta][genres].Simulation" class="form-check-label">Simulation</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][genre].Simulation"
-        name="[meta][genre][]" value="Simulation"
+        id="[meta][genres].Strategy"
+        name="[meta][genres][]" value="Strategy"
         
       >
-      <label for="[meta][genre].Simulation" class="form-check-label">Simulation</label>
-    </div>
-  
-    <div class="form-check form-check-inline">
-      <input
-        type="checkbox"
-        class="form-check-input"
-        id="[meta][genre].Strategy"
-        name="[meta][genre][]" value="Strategy"
-        
-      >
-      <label for="[meta][genre].Strategy" class="form-check-label">Strategy</label>
+      <label for="[meta][genres].Strategy" class="form-check-label">Strategy</label>
     </div>
   
   </div>
@@ -1187,8 +1213,8 @@ type: seq
 </div>
 <div class="form-group row">
   
-    <label for="[meta][subgenre]" class="col-sm-2 col-form-label">
-      Subgenre
+    <label for="[meta][subgenres]" class="col-sm-2 col-form-label">
+      Subgenres
     </label>
     <div class="col-sm-10">
       
@@ -1204,462 +1230,484 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].4X"
-        name="[meta][subgenre][]" value="4X"
+        id="[meta][subgenres].4X"
+        name="[meta][subgenres][]" value="4X"
         
       >
-      <label for="[meta][subgenre].4X" class="form-check-label">4X</label>
+      <label for="[meta][subgenres].4X" class="form-check-label">4X</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Action RPG"
-        name="[meta][subgenre][]" value="Action RPG"
+        id="[meta][subgenres].Action RPG"
+        name="[meta][subgenres][]" value="Action RPG"
         
       >
-      <label for="[meta][subgenre].Action RPG" class="form-check-label">Action RPG</label>
+      <label for="[meta][subgenres].Action RPG" class="form-check-label">Action RPG</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Baseball"
-        name="[meta][subgenre][]" value="Baseball"
+        id="[meta][subgenres].Artillery"
+        name="[meta][subgenres][]" value="Artillery"
         
       >
-      <label for="[meta][subgenre].Baseball" class="form-check-label">Baseball</label>
+      <label for="[meta][subgenres].Artillery" class="form-check-label">Artillery</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Basketball"
-        name="[meta][subgenre][]" value="Basketball"
+        id="[meta][subgenres].Baseball"
+        name="[meta][subgenres][]" value="Baseball"
         
       >
-      <label for="[meta][subgenre].Basketball" class="form-check-label">Basketball</label>
+      <label for="[meta][subgenres].Baseball" class="form-check-label">Baseball</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Billiards"
-        name="[meta][subgenre][]" value="Billiards"
+        id="[meta][subgenres].Basketball"
+        name="[meta][subgenres][]" value="Basketball"
         
       >
-      <label for="[meta][subgenre].Billiards" class="form-check-label">Billiards</label>
+      <label for="[meta][subgenres].Basketball" class="form-check-label">Basketball</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Board Game"
-        name="[meta][subgenre][]" value="Board Game"
+        id="[meta][subgenres].Billiards"
+        name="[meta][subgenres][]" value="Billiards"
         
       >
-      <label for="[meta][subgenre].Board Game" class="form-check-label">Board Game</label>
+      <label for="[meta][subgenres].Billiards" class="form-check-label">Billiards</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Bowling"
-        name="[meta][subgenre][]" value="Bowling"
+        id="[meta][subgenres].Board Game"
+        name="[meta][subgenres][]" value="Board Game"
         
       >
-      <label for="[meta][subgenre].Bowling" class="form-check-label">Bowling</label>
+      <label for="[meta][subgenres].Board Game" class="form-check-label">Board Game</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Boxing"
-        name="[meta][subgenre][]" value="Boxing"
+        id="[meta][subgenres].Bowling"
+        name="[meta][subgenres][]" value="Bowling"
         
       >
-      <label for="[meta][subgenre].Boxing" class="form-check-label">Boxing</label>
+      <label for="[meta][subgenres].Bowling" class="form-check-label">Bowling</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Bullet Hell"
-        name="[meta][subgenre][]" value="Bullet Hell"
+        id="[meta][subgenres].Boxing"
+        name="[meta][subgenres][]" value="Boxing"
         
       >
-      <label for="[meta][subgenre].Bullet Hell" class="form-check-label">Bullet Hell</label>
+      <label for="[meta][subgenres].Boxing" class="form-check-label">Boxing</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].City Building"
-        name="[meta][subgenre][]" value="City Building"
+        id="[meta][subgenres].Bullet Hell"
+        name="[meta][subgenres][]" value="Bullet Hell"
         
       >
-      <label for="[meta][subgenre].City Building" class="form-check-label">City Building</label>
+      <label for="[meta][subgenres].Bullet Hell" class="form-check-label">Bullet Hell</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Cricket"
-        name="[meta][subgenre][]" value="Cricket"
+        id="[meta][subgenres].City Building"
+        name="[meta][subgenres][]" value="City Building"
         
       >
-      <label for="[meta][subgenre].Cricket" class="form-check-label">Cricket</label>
+      <label for="[meta][subgenres].City Building" class="form-check-label">City Building</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Dual-Joystick Shooter"
-        name="[meta][subgenre][]" value="Dual-Joystick Shooter"
+        id="[meta][subgenres].Cricket"
+        name="[meta][subgenres][]" value="Cricket"
         
       >
-      <label for="[meta][subgenre].Dual-Joystick Shooter" class="form-check-label">Dual-Joystick Shooter</label>
+      <label for="[meta][subgenres].Cricket" class="form-check-label">Cricket</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Fishing"
-        name="[meta][subgenre][]" value="Fishing"
+        id="[meta][subgenres].Dual-Joystick Shooter"
+        name="[meta][subgenres][]" value="Dual-Joystick Shooter"
         
       >
-      <label for="[meta][subgenre].Fishing" class="form-check-label">Fishing</label>
+      <label for="[meta][subgenres].Dual-Joystick Shooter" class="form-check-label">Dual-Joystick Shooter</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Fitness"
-        name="[meta][subgenre][]" value="Fitness"
+        id="[meta][subgenres].Fishing"
+        name="[meta][subgenres][]" value="Fishing"
         
       >
-      <label for="[meta][subgenre].Fitness" class="form-check-label">Fitness</label>
+      <label for="[meta][subgenres].Fishing" class="form-check-label">Fishing</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Flight Simulator"
-        name="[meta][subgenre][]" value="Flight Simulator"
+        id="[meta][subgenres].Fitness"
+        name="[meta][subgenres][]" value="Fitness"
         
       >
-      <label for="[meta][subgenre].Flight Simulator" class="form-check-label">Flight Simulator</label>
+      <label for="[meta][subgenres].Fitness" class="form-check-label">Fitness</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Football"
-        name="[meta][subgenre][]" value="Football"
+        id="[meta][subgenres].Flight Simulator"
+        name="[meta][subgenres][]" value="Flight Simulator"
         
       >
-      <label for="[meta][subgenre].Football" class="form-check-label">Football</label>
+      <label for="[meta][subgenres].Flight Simulator" class="form-check-label">Flight Simulator</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Gambling"
-        name="[meta][subgenre][]" value="Gambling"
+        id="[meta][subgenres].Football"
+        name="[meta][subgenres][]" value="Football"
         
       >
-      <label for="[meta][subgenre].Gambling" class="form-check-label">Gambling</label>
+      <label for="[meta][subgenres].Football" class="form-check-label">Football</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Golf"
-        name="[meta][subgenre][]" value="Golf"
+        id="[meta][subgenres].Gambling"
+        name="[meta][subgenres][]" value="Gambling"
         
       >
-      <label for="[meta][subgenre].Golf" class="form-check-label">Golf</label>
+      <label for="[meta][subgenres].Gambling" class="form-check-label">Gambling</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Handball"
-        name="[meta][subgenre][]" value="Handball"
+        id="[meta][subgenres].Golf"
+        name="[meta][subgenres][]" value="Golf"
         
       >
-      <label for="[meta][subgenre].Handball" class="form-check-label">Handball</label>
+      <label for="[meta][subgenres].Golf" class="form-check-label">Golf</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Hockey"
-        name="[meta][subgenre][]" value="Hockey"
+        id="[meta][subgenres].Handball"
+        name="[meta][subgenres][]" value="Handball"
         
       >
-      <label for="[meta][subgenre].Hockey" class="form-check-label">Hockey</label>
+      <label for="[meta][subgenres].Handball" class="form-check-label">Handball</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Life"
-        name="[meta][subgenre][]" value="Life"
+        id="[meta][subgenres].Hockey"
+        name="[meta][subgenres][]" value="Hockey"
         
       >
-      <label for="[meta][subgenre].Life" class="form-check-label">Life</label>
+      <label for="[meta][subgenres].Hockey" class="form-check-label">Hockey</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Light-Gun Shooter"
-        name="[meta][subgenre][]" value="Light-Gun Shooter"
+        id="[meta][subgenres].Life"
+        name="[meta][subgenres][]" value="Life"
         
       >
-      <label for="[meta][subgenre].Light-Gun Shooter" class="form-check-label">Light-Gun Shooter</label>
+      <label for="[meta][subgenres].Life" class="form-check-label">Life</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Pinball"
-        name="[meta][subgenre][]" value="Pinball"
+        id="[meta][subgenres].Light-Gun Shooter"
+        name="[meta][subgenres][]" value="Light-Gun Shooter"
         
       >
-      <label for="[meta][subgenre].Pinball" class="form-check-label">Pinball</label>
+      <label for="[meta][subgenres].Light-Gun Shooter" class="form-check-label">Light-Gun Shooter</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Point and click"
-        name="[meta][subgenre][]" value="Point and click"
+        id="[meta][subgenres].Pinball"
+        name="[meta][subgenres][]" value="Pinball"
         
       >
-      <label for="[meta][subgenre].Point and click" class="form-check-label">Point and click</label>
+      <label for="[meta][subgenres].Pinball" class="form-check-label">Pinball</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Run and gun"
-        name="[meta][subgenre][]" value="Run and gun"
+        id="[meta][subgenres].Point and click"
+        name="[meta][subgenres][]" value="Point and click"
         
       >
-      <label for="[meta][subgenre].Run and gun" class="form-check-label">Run and gun</label>
+      <label for="[meta][subgenres].Point and click" class="form-check-label">Point and click</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Sandbox"
-        name="[meta][subgenre][]" value="Sandbox"
+        id="[meta][subgenres].Run and gun"
+        name="[meta][subgenres][]" value="Run and gun"
         
       >
-      <label for="[meta][subgenre].Sandbox" class="form-check-label">Sandbox</label>
+      <label for="[meta][subgenres].Run and gun" class="form-check-label">Run and gun</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Skateboarding"
-        name="[meta][subgenre][]" value="Skateboarding"
+        id="[meta][subgenres].Sandbox"
+        name="[meta][subgenres][]" value="Sandbox"
         
       >
-      <label for="[meta][subgenre].Skateboarding" class="form-check-label">Skateboarding</label>
+      <label for="[meta][subgenres].Sandbox" class="form-check-label">Sandbox</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Skiing"
-        name="[meta][subgenre][]" value="Skiing"
+        id="[meta][subgenres].Skateboarding"
+        name="[meta][subgenres][]" value="Skateboarding"
         
       >
-      <label for="[meta][subgenre].Skiing" class="form-check-label">Skiing</label>
+      <label for="[meta][subgenres].Skateboarding" class="form-check-label">Skateboarding</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Snowboarding"
-        name="[meta][subgenre][]" value="Snowboarding"
+        id="[meta][subgenres].Skiing"
+        name="[meta][subgenres][]" value="Skiing"
         
       >
-      <label for="[meta][subgenre].Snowboarding" class="form-check-label">Snowboarding</label>
+      <label for="[meta][subgenres].Skiing" class="form-check-label">Skiing</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Soccer"
-        name="[meta][subgenre][]" value="Soccer"
+        id="[meta][subgenres].Snowboarding"
+        name="[meta][subgenres][]" value="Snowboarding"
         
       >
-      <label for="[meta][subgenre].Soccer" class="form-check-label">Soccer</label>
+      <label for="[meta][subgenres].Snowboarding" class="form-check-label">Snowboarding</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Space Flight"
-        name="[meta][subgenre][]" value="Space Flight"
+        id="[meta][subgenres].Soccer"
+        name="[meta][subgenres][]" value="Soccer"
         
       >
-      <label for="[meta][subgenre].Space Flight" class="form-check-label">Space Flight</label>
+      <label for="[meta][subgenres].Soccer" class="form-check-label">Soccer</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Surfing"
-        name="[meta][subgenre][]" value="Surfing"
+        id="[meta][subgenres].Space Flight"
+        name="[meta][subgenres][]" value="Space Flight"
         
       >
-      <label for="[meta][subgenre].Surfing" class="form-check-label">Surfing</label>
+      <label for="[meta][subgenres].Space Flight" class="form-check-label">Space Flight</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Submarine Simulator"
-        name="[meta][subgenre][]" value="Submarine Simulator"
+        id="[meta][subgenres].Surfing"
+        name="[meta][subgenres][]" value="Surfing"
         
       >
-      <label for="[meta][subgenre].Submarine Simulator" class="form-check-label">Submarine Simulator</label>
+      <label for="[meta][subgenres].Surfing" class="form-check-label">Surfing</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Survival"
-        name="[meta][subgenre][]" value="Survival"
+        id="[meta][subgenres].Submarine Simulator"
+        name="[meta][subgenres][]" value="Submarine Simulator"
         
       >
-      <label for="[meta][subgenre].Survival" class="form-check-label">Survival</label>
+      <label for="[meta][subgenres].Submarine Simulator" class="form-check-label">Submarine Simulator</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Tennis"
-        name="[meta][subgenre][]" value="Tennis"
+        id="[meta][subgenres].Survival"
+        name="[meta][subgenres][]" value="Survival"
         
       >
-      <label for="[meta][subgenre].Tennis" class="form-check-label">Tennis</label>
+      <label for="[meta][subgenres].Survival" class="form-check-label">Survival</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Text Adventure"
-        name="[meta][subgenre][]" value="Text Adventure"
+        id="[meta][subgenres].Tennis"
+        name="[meta][subgenres][]" value="Tennis"
         
       >
-      <label for="[meta][subgenre].Text Adventure" class="form-check-label">Text Adventure</label>
+      <label for="[meta][subgenres].Tennis" class="form-check-label">Tennis</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Tower Defense"
-        name="[meta][subgenre][]" value="Tower Defense"
+        id="[meta][subgenres].Text Adventure"
+        name="[meta][subgenres][]" value="Text Adventure"
         
       >
-      <label for="[meta][subgenre].Tower Defense" class="form-check-label">Tower Defense</label>
+      <label for="[meta][subgenres].Text Adventure" class="form-check-label">Text Adventure</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Track & Field"
-        name="[meta][subgenre][]" value="Track & Field"
+        id="[meta][subgenres].Tower Defense"
+        name="[meta][subgenres][]" value="Tower Defense"
         
       >
-      <label for="[meta][subgenre].Track & Field" class="form-check-label">Track & Field</label>
+      <label for="[meta][subgenres].Tower Defense" class="form-check-label">Tower Defense</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Train Simulator"
-        name="[meta][subgenre][]" value="Train Simulator"
+        id="[meta][subgenres].Track & Field"
+        name="[meta][subgenres][]" value="Track & Field"
         
       >
-      <label for="[meta][subgenre].Train Simulator" class="form-check-label">Train Simulator</label>
+      <label for="[meta][subgenres].Track & Field" class="form-check-label">Track & Field</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Vehicular Combat"
-        name="[meta][subgenre][]" value="Vehicular Combat"
+        id="[meta][subgenres].Train Simulator"
+        name="[meta][subgenres][]" value="Train Simulator"
         
       >
-      <label for="[meta][subgenre].Vehicular Combat" class="form-check-label">Vehicular Combat</label>
+      <label for="[meta][subgenres].Train Simulator" class="form-check-label">Train Simulator</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Volleyball"
-        name="[meta][subgenre][]" value="Volleyball"
+        id="[meta][subgenres].Vehicular Combat"
+        name="[meta][subgenres][]" value="Vehicular Combat"
         
       >
-      <label for="[meta][subgenre].Volleyball" class="form-check-label">Volleyball</label>
+      <label for="[meta][subgenres].Vehicular Combat" class="form-check-label">Vehicular Combat</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][subgenre].Wrestling"
-        name="[meta][subgenre][]" value="Wrestling"
+        id="[meta][subgenres].Visual Novel"
+        name="[meta][subgenres][]" value="Visual Novel"
         
       >
-      <label for="[meta][subgenre].Wrestling" class="form-check-label">Wrestling</label>
+      <label for="[meta][subgenres].Visual Novel" class="form-check-label">Visual Novel</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenres].Volleyball"
+        name="[meta][subgenres][]" value="Volleyball"
+        
+      >
+      <label for="[meta][subgenres].Volleyball" class="form-check-label">Volleyball</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[meta][subgenres].Wrestling"
+        name="[meta][subgenres][]" value="Wrestling"
+        
+      >
+      <label for="[meta][subgenres].Wrestling" class="form-check-label">Wrestling</label>
     </div>
   
   </div>
@@ -1671,8 +1719,8 @@ type: seq
 </div>
 <div class="form-group row">
   
-    <label for="[meta][theme]" class="col-sm-2 col-form-label">
-      Theme
+    <label for="[meta][themes]" class="col-sm-2 col-form-label">
+      Themes
     </label>
     <div class="col-sm-10">
       
@@ -1688,352 +1736,352 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Abstract"
-        name="[meta][theme][]" value="Abstract"
+        id="[meta][themes].Abstract"
+        name="[meta][themes][]" value="Abstract"
         
       >
-      <label for="[meta][theme].Abstract" class="form-check-label">Abstract</label>
+      <label for="[meta][themes].Abstract" class="form-check-label">Abstract</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Adult"
-        name="[meta][theme][]" value="Adult"
+        id="[meta][themes].Adult"
+        name="[meta][themes][]" value="Adult"
         
       >
-      <label for="[meta][theme].Adult" class="form-check-label">Adult</label>
+      <label for="[meta][themes].Adult" class="form-check-label">Adult</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Alternate Historical"
-        name="[meta][theme][]" value="Alternate Historical"
+        id="[meta][themes].Alternate Historical"
+        name="[meta][themes][]" value="Alternate Historical"
         
       >
-      <label for="[meta][theme].Alternate Historical" class="form-check-label">Alternate Historical</label>
+      <label for="[meta][themes].Alternate Historical" class="form-check-label">Alternate Historical</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Anime"
-        name="[meta][theme][]" value="Anime"
+        id="[meta][themes].Anime"
+        name="[meta][themes][]" value="Anime"
         
       >
-      <label for="[meta][theme].Anime" class="form-check-label">Anime</label>
+      <label for="[meta][themes].Anime" class="form-check-label">Anime</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Aquatic"
-        name="[meta][theme][]" value="Aquatic"
+        id="[meta][themes].Aquatic"
+        name="[meta][themes][]" value="Aquatic"
         
       >
-      <label for="[meta][theme].Aquatic" class="form-check-label">Aquatic</label>
+      <label for="[meta][themes].Aquatic" class="form-check-label">Aquatic</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Civil War"
-        name="[meta][theme][]" value="Civil War"
+        id="[meta][themes].Civil War"
+        name="[meta][themes][]" value="Civil War"
         
       >
-      <label for="[meta][theme].Civil War" class="form-check-label">Civil War</label>
+      <label for="[meta][themes].Civil War" class="form-check-label">Civil War</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Comedy"
-        name="[meta][theme][]" value="Comedy"
+        id="[meta][themes].Comedy"
+        name="[meta][themes][]" value="Comedy"
         
       >
-      <label for="[meta][theme].Comedy" class="form-check-label">Comedy</label>
+      <label for="[meta][themes].Comedy" class="form-check-label">Comedy</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Comic Book"
-        name="[meta][theme][]" value="Comic Book"
+        id="[meta][themes].Comic Book"
+        name="[meta][themes][]" value="Comic Book"
         
       >
-      <label for="[meta][theme].Comic Book" class="form-check-label">Comic Book</label>
+      <label for="[meta][themes].Comic Book" class="form-check-label">Comic Book</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Crime"
-        name="[meta][theme][]" value="Crime"
+        id="[meta][themes].Crime"
+        name="[meta][themes][]" value="Crime"
         
       >
-      <label for="[meta][theme].Crime" class="form-check-label">Crime</label>
+      <label for="[meta][themes].Crime" class="form-check-label">Crime</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Cyberpunk"
-        name="[meta][theme][]" value="Cyberpunk"
+        id="[meta][themes].Cyberpunk"
+        name="[meta][themes][]" value="Cyberpunk"
         
       >
-      <label for="[meta][theme].Cyberpunk" class="form-check-label">Cyberpunk</label>
+      <label for="[meta][themes].Cyberpunk" class="form-check-label">Cyberpunk</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Dating"
-        name="[meta][theme][]" value="Dating"
+        id="[meta][themes].Dating"
+        name="[meta][themes][]" value="Dating"
         
       >
-      <label for="[meta][theme].Dating" class="form-check-label">Dating</label>
+      <label for="[meta][themes].Dating" class="form-check-label">Dating</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Egyptian"
-        name="[meta][theme][]" value="Egyptian"
+        id="[meta][themes].Egyptian"
+        name="[meta][themes][]" value="Egyptian"
         
       >
-      <label for="[meta][theme].Egyptian" class="form-check-label">Egyptian</label>
+      <label for="[meta][themes].Egyptian" class="form-check-label">Egyptian</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Espionage"
-        name="[meta][theme][]" value="Espionage"
+        id="[meta][themes].Espionage"
+        name="[meta][themes][]" value="Espionage"
         
       >
-      <label for="[meta][theme].Espionage" class="form-check-label">Espionage</label>
+      <label for="[meta][themes].Espionage" class="form-check-label">Espionage</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Fantasy"
-        name="[meta][theme][]" value="Fantasy"
+        id="[meta][themes].Fantasy"
+        name="[meta][themes][]" value="Fantasy"
         
       >
-      <label for="[meta][theme].Fantasy" class="form-check-label">Fantasy</label>
+      <label for="[meta][themes].Fantasy" class="form-check-label">Fantasy</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Game Show"
-        name="[meta][theme][]" value="Game Show"
+        id="[meta][themes].Game Show"
+        name="[meta][themes][]" value="Game Show"
         
       >
-      <label for="[meta][theme].Game Show" class="form-check-label">Game Show</label>
+      <label for="[meta][themes].Game Show" class="form-check-label">Game Show</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Horror"
-        name="[meta][theme][]" value="Horror"
+        id="[meta][themes].Horror"
+        name="[meta][themes][]" value="Horror"
         
       >
-      <label for="[meta][theme].Horror" class="form-check-label">Horror</label>
+      <label for="[meta][themes].Horror" class="form-check-label">Horror</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Management"
-        name="[meta][theme][]" value="Management"
+        id="[meta][themes].Management"
+        name="[meta][themes][]" value="Management"
         
       >
-      <label for="[meta][theme].Management" class="form-check-label">Management</label>
+      <label for="[meta][themes].Management" class="form-check-label">Management</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Martial Arts"
-        name="[meta][theme][]" value="Martial Arts"
+        id="[meta][themes].Martial Arts"
+        name="[meta][themes][]" value="Martial Arts"
         
       >
-      <label for="[meta][theme].Martial Arts" class="form-check-label">Martial Arts</label>
+      <label for="[meta][themes].Martial Arts" class="form-check-label">Martial Arts</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Mayan"
-        name="[meta][theme][]" value="Mayan"
+        id="[meta][themes].Mayan"
+        name="[meta][themes][]" value="Mayan"
         
       >
-      <label for="[meta][theme].Mayan" class="form-check-label">Mayan</label>
+      <label for="[meta][themes].Mayan" class="form-check-label">Mayan</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Medieval"
-        name="[meta][theme][]" value="Medieval"
+        id="[meta][themes].Medieval"
+        name="[meta][themes][]" value="Medieval"
         
       >
-      <label for="[meta][theme].Medieval" class="form-check-label">Medieval</label>
+      <label for="[meta][themes].Medieval" class="form-check-label">Medieval</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Meditative"
-        name="[meta][theme][]" value="Meditative"
+        id="[meta][themes].Meditative"
+        name="[meta][themes][]" value="Meditative"
         
       >
-      <label for="[meta][theme].Meditative" class="form-check-label">Meditative</label>
+      <label for="[meta][themes].Meditative" class="form-check-label">Meditative</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Modern Military"
-        name="[meta][theme][]" value="Modern Military"
+        id="[meta][themes].Modern Military"
+        name="[meta][themes][]" value="Modern Military"
         
       >
-      <label for="[meta][theme].Modern Military" class="form-check-label">Modern Military</label>
+      <label for="[meta][themes].Modern Military" class="form-check-label">Modern Military</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Motorsports"
-        name="[meta][theme][]" value="Motorsports"
+        id="[meta][themes].Motorsports"
+        name="[meta][themes][]" value="Motorsports"
         
       >
-      <label for="[meta][theme].Motorsports" class="form-check-label">Motorsports</label>
+      <label for="[meta][themes].Motorsports" class="form-check-label">Motorsports</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Post-Apocalyptic"
-        name="[meta][theme][]" value="Post-Apocalyptic"
+        id="[meta][themes].Post-Apocalyptic"
+        name="[meta][themes][]" value="Post-Apocalyptic"
         
       >
-      <label for="[meta][theme].Post-Apocalyptic" class="form-check-label">Post-Apocalyptic</label>
+      <label for="[meta][themes].Post-Apocalyptic" class="form-check-label">Post-Apocalyptic</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Prehistoric"
-        name="[meta][theme][]" value="Prehistoric"
+        id="[meta][themes].Prehistoric"
+        name="[meta][themes][]" value="Prehistoric"
         
       >
-      <label for="[meta][theme].Prehistoric" class="form-check-label">Prehistoric</label>
+      <label for="[meta][themes].Prehistoric" class="form-check-label">Prehistoric</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Sci-Fi"
-        name="[meta][theme][]" value="Sci-Fi"
+        id="[meta][themes].Sci-Fi"
+        name="[meta][themes][]" value="Sci-Fi"
         
       >
-      <label for="[meta][theme].Sci-Fi" class="form-check-label">Sci-Fi</label>
+      <label for="[meta][themes].Sci-Fi" class="form-check-label">Sci-Fi</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Steampunk"
-        name="[meta][theme][]" value="Steampunk"
+        id="[meta][themes].Steampunk"
+        name="[meta][themes][]" value="Steampunk"
         
       >
-      <label for="[meta][theme].Steampunk" class="form-check-label">Steampunk</label>
+      <label for="[meta][themes].Steampunk" class="form-check-label">Steampunk</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Superhero"
-        name="[meta][theme][]" value="Superhero"
+        id="[meta][themes].Superhero"
+        name="[meta][themes][]" value="Superhero"
         
       >
-      <label for="[meta][theme].Superhero" class="form-check-label">Superhero</label>
+      <label for="[meta][themes].Superhero" class="form-check-label">Superhero</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Vietnam"
-        name="[meta][theme][]" value="Vietnam"
+        id="[meta][themes].Vietnam"
+        name="[meta][themes][]" value="Vietnam"
         
       >
-      <label for="[meta][theme].Vietnam" class="form-check-label">Vietnam</label>
+      <label for="[meta][themes].Vietnam" class="form-check-label">Vietnam</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].Western"
-        name="[meta][theme][]" value="Western"
+        id="[meta][themes].Western"
+        name="[meta][themes][]" value="Western"
         
       >
-      <label for="[meta][theme].Western" class="form-check-label">Western</label>
+      <label for="[meta][themes].Western" class="form-check-label">Western</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].World War I"
-        name="[meta][theme][]" value="World War I"
+        id="[meta][themes].World War I"
+        name="[meta][themes][]" value="World War I"
         
       >
-      <label for="[meta][theme].World War I" class="form-check-label">World War I</label>
+      <label for="[meta][themes].World War I" class="form-check-label">World War I</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[meta][theme].World War II"
-        name="[meta][theme][]" value="World War II"
+        id="[meta][themes].World War II"
+        name="[meta][themes][]" value="World War II"
         
       >
-      <label for="[meta][theme].World War II" class="form-check-label">World War II</label>
+      <label for="[meta][themes].World War II" class="form-check-label">World War II</label>
     </div>
   
   </div>

@@ -72,7 +72,7 @@
     feed:
       desc: URL of RSS/Atom feed for the game's news, or releases
       type: str
-    framework:
+    frameworks:
       desc: Framework(s) or engine(s) used for the game, e.g. SDL2
       sequence:
       - type: str
@@ -87,13 +87,13 @@
     info:
       desc: Any notable information about the game
       type: str
-    lang:
+    langs:
       desc: Main programming language(s) used for the game, e.g. C++
       sequence:
       - type: str
         unique: true
       type: seq
-    license:
+    licenses:
       required: true
       sequence:
       - enum: &id001
@@ -183,6 +183,7 @@
       enum:
       - remake
       - clone
+      - official
       - similar
       - tool
       required: true
@@ -339,6 +340,20 @@ type: seq
           
         >
         <label for="[type].clone" class="form-check-label">clone</label>
+      </div>
+    
+      <div class="form-check"
+        
+      >
+        <input
+          type="radio"
+          class="form-check-input"
+          id="[type].official"
+          name="[type]" value="official"
+          required
+          
+        >
+        <label for="[type].official" class="form-check-label">official</label>
       </div>
     
       <div class="form-check"
@@ -847,8 +862,8 @@ Swappable: game data is commercial but can be swapped with open source replaceme
 </div>
 <div class="form-group row">
   
-    <label for="[lang]" class="col-sm-2 col-form-label">
-      Lang
+    <label for="[langs]" class="col-sm-2 col-form-label">
+      Langs
     </label>
     <div class="col-sm-10">
       
@@ -860,8 +875,8 @@ Swappable: game data is commercial but can be swapped with open source replaceme
 <input
   type="text"
   data-allow-duplicates
-  id="[lang]"
-  name="[lang]:csv"
+  id="[langs]"
+  name="[langs]:csv"
   class="form-control tagsinput"
   
   
@@ -877,8 +892,8 @@ Swappable: game data is commercial but can be swapped with open source replaceme
 </div>
 <div class="form-group row">
   
-    <label for="[framework]" class="col-sm-2 col-form-label">
-      Framework
+    <label for="[frameworks]" class="col-sm-2 col-form-label">
+      Frameworks
     </label>
     <div class="col-sm-10">
       
@@ -890,8 +905,8 @@ Swappable: game data is commercial but can be swapped with open source replaceme
 <input
   type="text"
   data-allow-duplicates
-  id="[framework]"
-  name="[framework]:csv"
+  id="[frameworks]"
+  name="[frameworks]:csv"
   class="form-control tagsinput"
   
   
@@ -907,8 +922,8 @@ Swappable: game data is commercial but can be swapped with open source replaceme
 </div>
 <div class="form-group row">
   
-    <label for="[license]" class="col-sm-2 col-form-label">
-      License
+    <label for="[licenses]" class="col-sm-2 col-form-label">
+      Licenses
     </label>
     <div class="col-sm-10">
       
@@ -924,396 +939,396 @@ Swappable: game data is commercial but can be swapped with open source replaceme
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].Custom"
-        name="[license][]" value="Custom"
+        id="[licenses].Custom"
+        name="[licenses][]" value="Custom"
         
       >
-      <label for="[license].Custom" class="form-check-label">Custom</label>
+      <label for="[licenses].Custom" class="form-check-label">Custom</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].Multiple"
-        name="[license][]" value="Multiple"
+        id="[licenses].Multiple"
+        name="[licenses][]" value="Multiple"
         
       >
-      <label for="[license].Multiple" class="form-check-label">Multiple</label>
+      <label for="[licenses].Multiple" class="form-check-label">Multiple</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].PD"
-        name="[license][]" value="PD"
+        id="[licenses].PD"
+        name="[licenses][]" value="PD"
         
       >
-      <label for="[license].PD" class="form-check-label">PD</label>
+      <label for="[licenses].PD" class="form-check-label">PD</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].As-is"
-        name="[license][]" value="As-is"
+        id="[licenses].As-is"
+        name="[licenses][]" value="As-is"
         
       >
-      <label for="[license].As-is" class="form-check-label">As-is</label>
+      <label for="[licenses].As-is" class="form-check-label">As-is</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].AFL3"
-        name="[license][]" value="AFL3"
+        id="[licenses].AFL3"
+        name="[licenses][]" value="AFL3"
         
       >
-      <label for="[license].AFL3" class="form-check-label">AFL3</label>
+      <label for="[licenses].AFL3" class="form-check-label">AFL3</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].AGPL3"
-        name="[license][]" value="AGPL3"
+        id="[licenses].AGPL3"
+        name="[licenses][]" value="AGPL3"
         
       >
-      <label for="[license].AGPL3" class="form-check-label">AGPL3</label>
+      <label for="[licenses].AGPL3" class="form-check-label">AGPL3</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].Apache"
-        name="[license][]" value="Apache"
+        id="[licenses].Apache"
+        name="[licenses][]" value="Apache"
         
       >
-      <label for="[license].Apache" class="form-check-label">Apache</label>
+      <label for="[licenses].Apache" class="form-check-label">Apache</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].Artistic"
-        name="[license][]" value="Artistic"
+        id="[licenses].Artistic"
+        name="[licenses][]" value="Artistic"
         
       >
-      <label for="[license].Artistic" class="form-check-label">Artistic</label>
+      <label for="[licenses].Artistic" class="form-check-label">Artistic</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].BSD"
-        name="[license][]" value="BSD"
+        id="[licenses].BSD"
+        name="[licenses][]" value="BSD"
         
       >
-      <label for="[license].BSD" class="form-check-label">BSD</label>
+      <label for="[licenses].BSD" class="form-check-label">BSD</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].BSD2"
-        name="[license][]" value="BSD2"
+        id="[licenses].BSD2"
+        name="[licenses][]" value="BSD2"
         
       >
-      <label for="[license].BSD2" class="form-check-label">BSD2</label>
+      <label for="[licenses].BSD2" class="form-check-label">BSD2</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].BSD4"
-        name="[license][]" value="BSD4"
+        id="[licenses].BSD4"
+        name="[licenses][]" value="BSD4"
         
       >
-      <label for="[license].BSD4" class="form-check-label">BSD4</label>
+      <label for="[licenses].BSD4" class="form-check-label">BSD4</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].bzip2"
-        name="[license][]" value="bzip2"
+        id="[licenses].bzip2"
+        name="[licenses][]" value="bzip2"
         
       >
-      <label for="[license].bzip2" class="form-check-label">bzip2</label>
+      <label for="[licenses].bzip2" class="form-check-label">bzip2</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].CC0"
-        name="[license][]" value="CC0"
+        id="[licenses].CC0"
+        name="[licenses][]" value="CC0"
         
       >
-      <label for="[license].CC0" class="form-check-label">CC0</label>
+      <label for="[licenses].CC0" class="form-check-label">CC0</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].CC-BY"
-        name="[license][]" value="CC-BY"
+        id="[licenses].CC-BY"
+        name="[licenses][]" value="CC-BY"
         
       >
-      <label for="[license].CC-BY" class="form-check-label">CC-BY</label>
+      <label for="[licenses].CC-BY" class="form-check-label">CC-BY</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].CC-BY-NC"
-        name="[license][]" value="CC-BY-NC"
+        id="[licenses].CC-BY-NC"
+        name="[licenses][]" value="CC-BY-NC"
         
       >
-      <label for="[license].CC-BY-NC" class="form-check-label">CC-BY-NC</label>
+      <label for="[licenses].CC-BY-NC" class="form-check-label">CC-BY-NC</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].CC-BY-NC-ND"
-        name="[license][]" value="CC-BY-NC-ND"
+        id="[licenses].CC-BY-NC-ND"
+        name="[licenses][]" value="CC-BY-NC-ND"
         
       >
-      <label for="[license].CC-BY-NC-ND" class="form-check-label">CC-BY-NC-ND</label>
+      <label for="[licenses].CC-BY-NC-ND" class="form-check-label">CC-BY-NC-ND</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].CC-BY-NC-SA"
-        name="[license][]" value="CC-BY-NC-SA"
+        id="[licenses].CC-BY-NC-SA"
+        name="[licenses][]" value="CC-BY-NC-SA"
         
       >
-      <label for="[license].CC-BY-NC-SA" class="form-check-label">CC-BY-NC-SA</label>
+      <label for="[licenses].CC-BY-NC-SA" class="form-check-label">CC-BY-NC-SA</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].CC-BY-SA"
-        name="[license][]" value="CC-BY-SA"
+        id="[licenses].CC-BY-SA"
+        name="[licenses][]" value="CC-BY-SA"
         
       >
-      <label for="[license].CC-BY-SA" class="form-check-label">CC-BY-SA</label>
+      <label for="[licenses].CC-BY-SA" class="form-check-label">CC-BY-SA</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].GPL1"
-        name="[license][]" value="GPL1"
+        id="[licenses].GPL1"
+        name="[licenses][]" value="GPL1"
         
       >
-      <label for="[license].GPL1" class="form-check-label">GPL1</label>
+      <label for="[licenses].GPL1" class="form-check-label">GPL1</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].GPL2"
-        name="[license][]" value="GPL2"
+        id="[licenses].GPL2"
+        name="[licenses][]" value="GPL2"
         
       >
-      <label for="[license].GPL2" class="form-check-label">GPL2</label>
+      <label for="[licenses].GPL2" class="form-check-label">GPL2</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].GPL3"
-        name="[license][]" value="GPL3"
+        id="[licenses].GPL3"
+        name="[licenses][]" value="GPL3"
         
       >
-      <label for="[license].GPL3" class="form-check-label">GPL3</label>
+      <label for="[licenses].GPL3" class="form-check-label">GPL3</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].IJG"
-        name="[license][]" value="IJG"
+        id="[licenses].IJG"
+        name="[licenses][]" value="IJG"
         
       >
-      <label for="[license].IJG" class="form-check-label">IJG</label>
+      <label for="[licenses].IJG" class="form-check-label">IJG</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].ISC"
-        name="[license][]" value="ISC"
+        id="[licenses].ISC"
+        name="[licenses][]" value="ISC"
         
       >
-      <label for="[license].ISC" class="form-check-label">ISC</label>
+      <label for="[licenses].ISC" class="form-check-label">ISC</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].JRL"
-        name="[license][]" value="JRL"
+        id="[licenses].JRL"
+        name="[licenses][]" value="JRL"
         
       >
-      <label for="[license].JRL" class="form-check-label">JRL</label>
+      <label for="[licenses].JRL" class="form-check-label">JRL</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].LGPL2"
-        name="[license][]" value="LGPL2"
+        id="[licenses].LGPL2"
+        name="[licenses][]" value="LGPL2"
         
       >
-      <label for="[license].LGPL2" class="form-check-label">LGPL2</label>
+      <label for="[licenses].LGPL2" class="form-check-label">LGPL2</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].LGPL3"
-        name="[license][]" value="LGPL3"
+        id="[licenses].LGPL3"
+        name="[licenses][]" value="LGPL3"
         
       >
-      <label for="[license].LGPL3" class="form-check-label">LGPL3</label>
+      <label for="[licenses].LGPL3" class="form-check-label">LGPL3</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].Libpng"
-        name="[license][]" value="Libpng"
+        id="[licenses].Libpng"
+        name="[licenses][]" value="Libpng"
         
       >
-      <label for="[license].Libpng" class="form-check-label">Libpng</label>
+      <label for="[licenses].Libpng" class="form-check-label">Libpng</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].MAME"
-        name="[license][]" value="MAME"
+        id="[licenses].MAME"
+        name="[licenses][]" value="MAME"
         
       >
-      <label for="[license].MAME" class="form-check-label">MAME</label>
+      <label for="[licenses].MAME" class="form-check-label">MAME</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].MIT"
-        name="[license][]" value="MIT"
+        id="[licenses].MIT"
+        name="[licenses][]" value="MIT"
         
       >
-      <label for="[license].MIT" class="form-check-label">MIT</label>
+      <label for="[licenses].MIT" class="form-check-label">MIT</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].MPL"
-        name="[license][]" value="MPL"
+        id="[licenses].MPL"
+        name="[licenses][]" value="MPL"
         
       >
-      <label for="[license].MPL" class="form-check-label">MPL</label>
+      <label for="[licenses].MPL" class="form-check-label">MPL</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].MS-PL"
-        name="[license][]" value="MS-PL"
+        id="[licenses].MS-PL"
+        name="[licenses][]" value="MS-PL"
         
       >
-      <label for="[license].MS-PL" class="form-check-label">MS-PL</label>
+      <label for="[licenses].MS-PL" class="form-check-label">MS-PL</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].NGPL"
-        name="[license][]" value="NGPL"
+        id="[licenses].NGPL"
+        name="[licenses][]" value="NGPL"
         
       >
-      <label for="[license].NGPL" class="form-check-label">NGPL</label>
+      <label for="[licenses].NGPL" class="form-check-label">NGPL</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].OFL"
-        name="[license][]" value="OFL"
+        id="[licenses].OFL"
+        name="[licenses][]" value="OFL"
         
       >
-      <label for="[license].OFL" class="form-check-label">OFL</label>
+      <label for="[licenses].OFL" class="form-check-label">OFL</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].Unlicense"
-        name="[license][]" value="Unlicense"
+        id="[licenses].Unlicense"
+        name="[licenses][]" value="Unlicense"
         
       >
-      <label for="[license].Unlicense" class="form-check-label">Unlicense</label>
+      <label for="[licenses].Unlicense" class="form-check-label">Unlicense</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].WTFPL"
-        name="[license][]" value="WTFPL"
+        id="[licenses].WTFPL"
+        name="[licenses][]" value="WTFPL"
         
       >
-      <label for="[license].WTFPL" class="form-check-label">WTFPL</label>
+      <label for="[licenses].WTFPL" class="form-check-label">WTFPL</label>
     </div>
   
     <div class="form-check form-check-inline">
       <input
         type="checkbox"
         class="form-check-input"
-        id="[license].Zlib"
-        name="[license][]" value="Zlib"
+        id="[licenses].Zlib"
+        name="[licenses][]" value="Zlib"
         
       >
-      <label for="[license].Zlib" class="form-check-label">Zlib</label>
+      <label for="[licenses].Zlib" class="form-check-label">Zlib</label>
     </div>
   
   </div>
