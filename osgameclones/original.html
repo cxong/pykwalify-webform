@@ -165,6 +165,7 @@ schema;meta:
   type: map
 schema;platforms:
   enum: &id005
+  - 3DO
   - 3DS
   - Amiga
   - Amstrad CPC
@@ -173,11 +174,15 @@ schema;platforms:
   - Apple TV
   - Arcade
   - Atari
+  - BeOS
+  - CD-i
   - Classic Mac OS
+  - CoCo
   - Commodore 64
   - DOS
   - Dreamcast
   - DS
+  - FM Towns
   - Game Boy
   - GameCube
   - GBA
@@ -191,8 +196,11 @@ schema;platforms:
   - NES
   - N64
   - Nintendo Switch
+  - OS/2
   - OSX
+  - PC Booter
   - PC-98
+  - Pippin
   - PlayStation
   - PlayStation 2
   - PlayStation 3
@@ -200,6 +208,7 @@ schema;platforms:
   - PlayStation Vita
   - PSP
   - Saturn
+  - Sega CD
   - SNES
   - Web
   - Wii
@@ -402,6 +411,17 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[platforms].3DO"
+        name="[platforms][]" value="3DO"
+        
+      >
+      <label for="[platforms].3DO" class="form-check-label">3DO</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[platforms].3DS"
         name="[platforms][]" value="3DS"
         
@@ -490,11 +510,44 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[platforms].BeOS"
+        name="[platforms][]" value="BeOS"
+        
+      >
+      <label for="[platforms].BeOS" class="form-check-label">BeOS</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platforms].CD-i"
+        name="[platforms][]" value="CD-i"
+        
+      >
+      <label for="[platforms].CD-i" class="form-check-label">CD-i</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[platforms].Classic Mac OS"
         name="[platforms][]" value="Classic Mac OS"
         
       >
       <label for="[platforms].Classic Mac OS" class="form-check-label">Classic Mac OS</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platforms].CoCo"
+        name="[platforms][]" value="CoCo"
+        
+      >
+      <label for="[platforms].CoCo" class="form-check-label">CoCo</label>
     </div>
   
     <div class="form-check form-check-inline">
@@ -539,6 +592,17 @@ type: seq
         
       >
       <label for="[platforms].DS" class="form-check-label">DS</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platforms].FM Towns"
+        name="[platforms][]" value="FM Towns"
+        
+      >
+      <label for="[platforms].FM Towns" class="form-check-label">FM Towns</label>
     </div>
   
     <div class="form-check form-check-inline">
@@ -688,6 +752,17 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[platforms].OS/2"
+        name="[platforms][]" value="OS/2"
+        
+      >
+      <label for="[platforms].OS/2" class="form-check-label">OS/2</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[platforms].OSX"
         name="[platforms][]" value="OSX"
         
@@ -699,11 +774,33 @@ type: seq
       <input
         type="checkbox"
         class="form-check-input"
+        id="[platforms].PC Booter"
+        name="[platforms][]" value="PC Booter"
+        
+      >
+      <label for="[platforms].PC Booter" class="form-check-label">PC Booter</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
         id="[platforms].PC-98"
         name="[platforms][]" value="PC-98"
         
       >
       <label for="[platforms].PC-98" class="form-check-label">PC-98</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platforms].Pippin"
+        name="[platforms][]" value="Pippin"
+        
+      >
+      <label for="[platforms].Pippin" class="form-check-label">Pippin</label>
     </div>
   
     <div class="form-check form-check-inline">
@@ -781,6 +878,17 @@ type: seq
         
       >
       <label for="[platforms].Saturn" class="form-check-label">Saturn</label>
+    </div>
+  
+    <div class="form-check form-check-inline">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="[platforms].Sega CD"
+        name="[platforms][]" value="Sega CD"
+        
+      >
+      <label for="[platforms].Sega CD" class="form-check-label">Sega CD</label>
     </div>
   
     <div class="form-check form-check-inline">
