@@ -33,8 +33,7 @@ jobs:
         pipenv run python -m pykwalify_webform originals.yaml build/osgameclones/original.html build/ "" --name="Add original game" --base_url=/pykwalify-webform
 
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.5.1
+      uses: peaceiris/actions-gh-pages@v3
       env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./build
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
