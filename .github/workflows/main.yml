@@ -1,7 +1,7 @@
 name: Build and Deploy
 on: [push]
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -32,9 +32,17 @@ jobs:
         wget https://raw.githubusercontent.com/opengaming/osgameclones/master/schema/originals.yaml
         pipenv run python -m pykwalify_webform originals.yaml build/osgameclones/original.html build/ "" --name="Add original game" --base_url=/pykwalify-webform
 
+  deploy:
+    needs: build
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      contents: write
+    environment:
+      name: github-pages
+    runs-on: ubuntu-latest
+    steps:
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.5.1
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./build
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
