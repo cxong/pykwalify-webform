@@ -32,10 +32,6 @@ jobs:
         wget https://raw.githubusercontent.com/opengaming/osgameclones/master/schema/originals.yaml
         pipenv run python -m pykwalify_webform originals.yaml build/osgameclones/original.html build/ "" --name="Add original game" --base_url=/pykwalify-webform
 
-    - uses: actions/upload-pages-artifact@v1
-      with:
-        path: build
-
   deploy:
     needs: build
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
@@ -44,10 +40,10 @@ jobs:
       id-token: write   # to verify the deployment originates from an appropriate source
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-
     - name: Deploy
-      id: deployment
-      uses: actions/deploy-pages@v2
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
