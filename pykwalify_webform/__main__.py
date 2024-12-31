@@ -1,5 +1,5 @@
 import os
-from distutils.dir_util import copy_tree
+import shutil
 from os import makedirs
 from pathlib import Path
 
@@ -37,7 +37,7 @@ def main(
         f.write(renderer.render(target_schema, value, **kwargs))
 
     # Copy static files
-    copy_tree(str(HERE / "static"), static_path)
+    shutil.copytree(str(HERE / "static"), static_path, dirs_exist_ok=True)
 
 
 if __name__ == "__main__":
