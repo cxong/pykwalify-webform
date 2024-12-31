@@ -22,12 +22,12 @@ jobs:
     - name: Build (osgameclones.games)
       run: |
         wget https://raw.githubusercontent.com/opengaming/osgameclones/master/schema/games.yaml
-        pipenv run python -m pykwalify_webform games.yaml build/osgameclones/game.html build/ "" --name="Add game" --base_url=/pykwalify-webform
+        uv run python -m pykwalify_webform games.yaml build/osgameclones/game.html build/ "" --name="Add game" --base_url=/pykwalify-webform
 
     - name: Build (osgameclones.originals)
       run: |
         wget https://raw.githubusercontent.com/opengaming/osgameclones/master/schema/originals.yaml
-        pipenv run python -m pykwalify_webform originals.yaml build/osgameclones/original.html build/ "" --name="Add original game" --base_url=/pykwalify-webform
+        uv run python -m pykwalify_webform originals.yaml build/osgameclones/original.html build/ "" --name="Add original game" --base_url=/pykwalify-webform
 
   deploy:
     needs: build
