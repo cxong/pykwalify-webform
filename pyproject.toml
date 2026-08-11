@@ -7,15 +7,13 @@ license = {file = "LICENSE"}
 version = "0.3.0"
 description = "Generate webforms based on YAML schema with pykwalify"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -36,5 +34,5 @@ Repository = "https://github.com/cxong/pykwalify-webform"
 
 [dependency-groups]
 dev = [
-    "twine>=4.0.2",
+    "twine>=7.0.0",
 ]
